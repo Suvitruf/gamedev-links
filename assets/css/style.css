@@ -426,6 +426,16 @@ td select {
   cursor: default;
 }
 
+.pagination .pg-size {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  margin-right: auto;
+}
+
 /* === Utility === */
 .hidden {
   display: none !important;

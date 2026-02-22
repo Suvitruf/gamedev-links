@@ -8,7 +8,7 @@
     allData: [],
     filteredData: [],
     currentPage: 1,
-    pageSize: 20,
+    pageSize: parseInt(localStorage.getItem("pageSize"), 10) || 50,
     filters: [],    // array of { type: "tag"|"text", value: string }
     editMode: false
   };
@@ -148,10 +148,21 @@
     tableBody.innerHTML = html;
   }
 
+  function buildPageSizeSelect() {
+    var sizes = [10, 50, 100, 500, 1000];
+    var html = '<select class="pg-size">';
+    for (var i = 0; i < sizes.length; i++) {
+      html += '<option value="' + sizes[i] + '"' + (sizes[i] === state.pageSize ? " selected" : "") + '>' + sizes[i] + "</option>";
+    }
+    html += "</select>";
+    return html;
+  }
+
   function renderPagination() {
     var totalPages = Math.max(1, Math.ceil(state.filteredData.length / state.pageSize));
     var html = "";
 
+    html += buildPageSizeSelect();
     html += '<button class="pg-prev"' + (state.currentPage <= 1 ? " disabled" : "") + '>Prev</button>';
 
     for (var p = 1; p <= totalPages; p++) {
@@ -418,6 +429,18 @@
 
     paginationTop.addEventListener("click", handlePaginationClick);
     paginationBottom.addEventListener("click", handlePaginationClick);
+
+    function handlePageSizeChange(e) {
+      if (e.target.classList.contains("pg-size")) {
+        state.pageSize = parseInt(e.target.value, 10);
+        localStorage.setItem("pageSize", state.pageSize);
+        state.currentPage = 1;
+        render();
+      }
+    }
+
+    paginationTop.addEventListener("change", handlePageSizeChange);
+    paginationBottom.addEventListener("change", handlePageSizeChange);
 
     // Tag clicks in table (event delegation)
     tableBody.addEventListener("click", function (e) {
