@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /mnt/e/Projects/gamedev-links log --oneline --all)",
+      "WebSearch",
+      "WebFetch(domain:pages.github.com)",
+      "WebFetch(domain:suvitruf.ru)",
+      "Bash(python3 parse_digests.py 2>&1)"
+    ]
+  }
+}
