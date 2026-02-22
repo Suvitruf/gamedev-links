@@ -1,0 +1,361 @@
+/* === Reset & Base === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f5f5f5;
+}
+
+/* === Layout === */
+.site-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* === Header === */
+.site-header {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.site-header p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* === Search Block === */
+.search-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.search-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-row input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-row input:focus {
+  outline: none;
+  border-color: #4361ee;
+  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+}
+
+.search-row button {
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  background: #4361ee;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-row button:hover {
+  background: #3a56d4;
+}
+
+/* === Active Filters === */
+#active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+#active-filters:empty {
+  display: none;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.7rem;
+  font-size: 0.85rem;
+  background: #4361ee;
+  color: #fff;
+  border-radius: 16px;
+  white-space: nowrap;
+}
+
+.filter-chip .chip-label {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filter-chip .chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  font-size: 0.85rem;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+}
+
+.filter-chip .chip-remove:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* === Toolbar === */
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.toolbar button {
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.toolbar button:hover {
+  background: #e8e8e8;
+}
+
+#btn-edit {
+  background: #4361ee;
+  color: #fff;
+  border-color: #4361ee;
+}
+
+#btn-edit:hover {
+  background: #3a56d4;
+}
+
+#btn-save {
+  background: #2ecc71;
+  color: #fff;
+  border-color: #2ecc71;
+}
+
+#btn-save:hover {
+  background: #27ae60;
+}
+
+#btn-add {
+  background: #4361ee;
+  color: #fff;
+  border-color: #4361ee;
+}
+
+#btn-add:hover {
+  background: #3a56d4;
+}
+
+#btn-cancel {
+  background: #e74c3c;
+  color: #fff;
+  border-color: #e74c3c;
+}
+
+#btn-cancel:hover {
+  background: #c0392b;
+}
+
+/* === Table === */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+thead {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+th, td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+  background: #f9f9fb;
+}
+
+tbody tr:hover {
+  background: #eef1ff;
+}
+
+td a {
+  color: #4361ee;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+/* === Tag Pills === */
+a.tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  margin: 0.1rem 0.15rem;
+  font-size: 0.78rem;
+  background: #e8ecff;
+  color: #4361ee;
+  border-radius: 12px;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.tag:hover {
+  background: #d0d8ff;
+  text-decoration: none;
+}
+
+/* === Inline Edit Inputs === */
+td input[type="text"] {
+  width: 100%;
+  padding: 0.3rem 0.4rem;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+td select {
+  padding: 0.3rem 0.4rem;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* === Action Buttons in Table === */
+.row-actions {
+  display: flex;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.row-actions button {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.row-actions button:hover {
+  background: #e8e8e8;
+}
+
+.row-actions .btn-delete {
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.row-actions .btn-delete:hover {
+  background: #fde8e6;
+}
+
+.row-actions .btn-row-save {
+  color: #2ecc71;
+  border-color: #2ecc71;
+}
+
+.row-actions .btn-row-save:hover {
+  background: #e6f9ee;
+}
+
+/* === Pagination === */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.pagination button:hover {
+  background: #e8ecff;
+}
+
+.pagination button.active {
+  background: #4361ee;
+  color: #fff;
+  border-color: #4361ee;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* === Utility === */
+.hidden {
+  display: none !important;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .search-row {
+    flex-direction: column;
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

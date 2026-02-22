@@ -1,0 +1,47 @@
+---
+layout: default
+title: "Gamedev Links"
+---
+
+<header class="site-header">
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.description }}</p>
+</header>
+
+<main class="site-content">
+  <section class="search-block">
+    <div class="search-row">
+      <input type="text" id="search-input" placeholder="Search links...">
+      <button id="search-btn" type="button">Search</button>
+    </div>
+    <div id="active-filters"></div>
+  </section>
+
+  <nav class="pagination" id="pagination-top"></nav>
+
+  <div class="toolbar">
+    <button id="btn-edit" type="button">Edit</button>
+    <button id="btn-save" type="button" class="hidden">Save</button>
+    <button id="btn-add" type="button" class="hidden">Add</button>
+    <button id="btn-cancel" type="button" class="hidden">Cancel</button>
+  </div>
+
+  <div class="table-wrapper">
+    <table id="links-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Type</th>
+          <th>Language</th>
+          <th>Tags</th>
+          <th class="col-actions hidden">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+      </tbody>
+    </table>
+  </div>
+
+  <nav class="pagination" id="pagination-bottom"></nav>
+</main>

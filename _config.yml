@@ -1,0 +1,13 @@
+title: "Gamedev Links"
+description: "A curated collection of links to videos, articles, and other materials for game developers."
+baseurl: "/gamedev-links"
+url: ""
+
+exclude:
+  - docs/
+  - LICENSE
+  - CLAUDE.md
+  - README.md
+  - Gemfile.lock
+  - node_modules/
+  - vendor/

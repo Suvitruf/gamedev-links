@@ -1,0 +1,82 @@
+[
+  {
+    "Link": "https://lizengland.com/blog/2014/04/the-door-problem/",
+    "Title": "The Door Problem",
+    "Author": "Liz England",
+    "Type": "article",
+    "Language": "us",
+    "Tags": ["game design", "classic"]
+  },
+  {
+    "Link": "https://kenney.nl/",
+    "Title": "Kenney Game Assets",
+    "Author": "Kenney",
+    "Type": "site",
+    "Language": "us",
+    "Tags": ["assets", "free", "tools"]
+  },
+  {
+    "Link": "https://www.redblobgames.com/",
+    "Title": "Red Blob Games",
+    "Author": "Amit Patel",
+    "Type": "site",
+    "Language": "us",
+    "Tags": ["algorithms", "pathfinding", "interactive"]
+  },
+  {
+    "Link": "https://catlikecoding.com/unity/tutorials/",
+    "Title": "Catlike Coding Unity Tutorials",
+    "Author": "Jasper Flick",
+    "Type": "site",
+    "Language": "us",
+    "Tags": ["unity", "tutorial", "rendering"]
+  },
+  {
+    "Link": "https://www.gamedeveloper.com/design/the-13-basic-principles-of-gameplay-design",
+    "Title": "The 13 Basic Principles of Gameplay Design",
+    "Author": "Daniel Cook",
+    "Type": "article",
+    "Language": "us",
+    "Tags": ["game design", "fundamentals"]
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=ax7f3JZJHSw",
+    "Title": "Juice it or lose it",
+    "Author": "Martin Jonasson & Petri Purho",
+    "Type": "video",
+    "Language": "us",
+    "Tags": ["juice", "game feel", "GDC"]
+  },
+  {
+    "Link": "https://docs.godotengine.org/en/stable/getting_started/introduction/index.html",
+    "Title": "Introduction to Godot",
+    "Author": "Godot Engine",
+    "Type": "article",
+    "Language": "us",
+    "Tags": ["godot", "tutorial", "getting started"]
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=PMfhS-kEvc0",
+    "Title": "Designing Around a Narrative",
+    "Author": "Obsidian Entertainment",
+    "Type": "video",
+    "Language": "us",
+    "Tags": ["narrative", "game design", "GDC"]
+  },
+  {
+    "Link": "https://habr.com/ru/articles/588636/",
+    "Title": "ECS in game development",
+    "Author": "Leopotam",
+    "Type": "article",
+    "Language": "ru",
+    "Tags": ["ECS", "architecture", "tutorial"]
+  },
+  {
+    "Link": "https://www.shadertoy.com/",
+    "Title": "Shadertoy",
+    "Author": "Inigo Quilez & Pol Jeremias",
+    "Type": "site",
+    "Language": "us",
+    "Tags": ["shaders", "GLSL", "interactive"]
+  }
+]
