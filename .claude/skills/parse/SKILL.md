@@ -21,7 +21,7 @@ When parsing a specific digest page, the needed content is inside an <article> b
 6. Add type to records:
 - If it is site 80.lv, newsletter.gamediscover.co, habr.com, then add "article"
 - If it is video from youtube, add "video"
-7. Adds tag to the records:
+7. Add tag to records:
 - If it is unrealengine.com or about Unreal Engine, add "unreal engine"
 - If it is about Unity, add "unity"
 - If it is about Godot, add "godot"

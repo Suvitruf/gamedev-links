@@ -27,7 +27,7 @@ In /raw directory there is a json file with all needed data to show. Format:
 - Link. Link to the site/material.
 - Title. Resource/material title.
 - Author. Author's name.
-- Type. String. One from the list: article, video, site.
+- Type. String. One from the list: article, video, site, unknown.
 - Language. ISO country code.
 - Tags. List of custom tags. E.g. tutorial, showcase, demo, etc.
 
