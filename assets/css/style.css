@@ -23,18 +23,91 @@ body {
 .site-header {
   background: #1a1a2e;
   color: #fff;
-  padding: 1.5rem 1rem;
-  text-align: center;
+  padding: 0.75rem 1rem;
 }
 
-.site-header h1 {
-  font-size: 1.75rem;
-  margin-bottom: 0.25rem;
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.site-header p {
-  font-size: 0.95rem;
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.nav-brand:hover {
+  opacity: 0.9;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-links > a {
+  color: #fff;
   opacity: 0.85;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nav-links > a:hover {
+  opacity: 1;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  background: transparent;
+  border: none;
+  color: #fff;
+  opacity: 0.85;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  font-family: inherit;
+}
+
+.nav-dropdown-toggle:hover {
+  opacity: 1;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 140px;
+  display: none;
+  z-index: 10;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  display: block;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #1a1a2e;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nav-dropdown-menu a:hover {
+  background: #f0f0f0;
 }
 
 /* === Search Block === */
@@ -350,6 +423,16 @@ td select {
 
 /* === Responsive === */
 @media (max-width: 600px) {
+  .header-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .search-row {
     flex-direction: column;
   }
