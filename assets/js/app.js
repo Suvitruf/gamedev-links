@@ -26,10 +26,12 @@
   var btnCancel = document.getElementById("btn-cancel");
   var actionsHeaders = document.querySelectorAll(".col-actions");
 
-  // === ISO country code to flag emoji ===
+  // === ISO language/country code to flag emoji ===
+  var langToCountry = { EN: "US", JA: "JP", KO: "KR" };
+
   function countryFlag(code) {
     if (!code) return "";
-    var upper = code.toUpperCase();
+    var upper = (langToCountry[code.toUpperCase()] || code).toUpperCase();
     var cp1 = 0x1F1E6 - 65 + upper.charCodeAt(0);
     var cp2 = 0x1F1E6 - 65 + upper.charCodeAt(1);
     return String.fromCodePoint(cp1, cp2);
