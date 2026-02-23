@@ -2,9 +2,9 @@
 
 This site is a collection of links to various resources for game developers.
 
-Basic mockup: docs/Aseets/mockup.png
+Basic mockup: docs/Assets/mockup.png
 
-![](.docs/Aseets/mockup.png)
+![](.docs/Assets/mockup.png)
 
 Basic implementation consists of 2 main parts:
 - The page with filterable table
