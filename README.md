@@ -2,6 +2,8 @@
 
 A curated collection of links to videos, articles, and other materials for game developers. Based on the [Weekly Gamedev Digest](https://suvitruf.ru/2026/02/22/19690/weekly-gamedev-266-22-february-2026/) newsletter.
 
+![Table screenshot](docs/Assets/table.png)
+
 ## Features
 
 - Searchable and filterable table of gamedev resources
