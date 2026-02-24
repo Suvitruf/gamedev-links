@@ -6,3 +6,4 @@ _site/
 .bundle/
 vendor/
 __pycache__/
+raw/date_progress.json

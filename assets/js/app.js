@@ -97,7 +97,7 @@
       })
       .catch(function (err) {
         console.error("Failed to load data:", err);
-        tableBody.innerHTML = '<tr><td colspan="6">Failed to load data.</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="7">Failed to load data.</td></tr>';
       });
 
     bindEvents();
@@ -116,7 +116,7 @@
     var page = state.filteredData.slice(start, end);
 
     if (page.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="6">No results found.</td></tr>';
+      tableBody.innerHTML = '<tr><td colspan="7">No results found.</td></tr>';
       return;
     }
 
@@ -138,6 +138,7 @@
       html += "<td>" + esc(item.Author) + "</td>";
       html += "<td>" + esc(item.Type) + "</td>";
       html += "<td>" + countryFlag(item.Language) + " " + esc(item.Language) + "</td>";
+      html += "<td>" + esc(item.Date || "01.01.1970") + "</td>";
       html += "<td>" + tagsHtml + "</td>";
       html += '<td class="col-actions' + (state.editMode ? "" : " hidden") + '">';
       html += '<div class="row-actions">';
@@ -233,6 +234,7 @@
             item.Author,
             item.Type,
             item.Language,
+            item.Date || "",
             (item.Tags || []).join(" ")
           ].join(" ").toLowerCase();
           return text.indexOf(term) !== -1;
@@ -322,9 +324,10 @@
       + '<option value="site"' + (item.Type === "site" ? " selected" : "") + '>site</option>'
       + "</select>";
     cells[3].innerHTML = '<input type="text" class="edit-language" value="' + esc(item.Language) + '" placeholder="ISO code" style="width:60px">';
-    cells[4].innerHTML = '<input type="text" class="edit-tags" value="' + esc((item.Tags || []).join(", ")) + '" placeholder="comma separated">';
+    cells[4].innerHTML = '<input type="text" class="edit-date" value="' + esc(item.Date || "01.01.1970") + '" placeholder="dd.mm.YYYY" style="width:90px">';
+    cells[5].innerHTML = '<input type="text" class="edit-tags" value="' + esc((item.Tags || []).join(", ")) + '" placeholder="comma separated">';
 
-    cells[5].innerHTML = '<div class="row-actions">'
+    cells[6].innerHTML = '<div class="row-actions">'
       + '<button class="btn-row-save" data-index="' + index + '">Save</button>'
       + '<button class="btn-row-cancel" data-index="' + index + '">Cancel</button>'
       + "</div>";
@@ -343,6 +346,7 @@
     item.Author = row.querySelector(".edit-author").value.trim();
     item.Type = row.querySelector(".edit-type").value;
     item.Language = row.querySelector(".edit-language").value.trim();
+    item.Date = row.querySelector(".edit-date").value.trim();
 
     var tagsStr = row.querySelector(".edit-tags").value;
     item.Tags = tagsStr.split(",").map(function (t) { return t.trim(); }).filter(Boolean);
@@ -357,6 +361,7 @@
       Author: "",
       Type: "article",
       Language: "us",
+      Date: "01.01.1970",
       Tags: []
     };
     state.allData.unshift(newItem);
