@@ -1,7 +1,7 @@
 title: "Gamedev Links"
 description: "A curated collection of links to videos, articles, and other materials for game developers."
 baseurl: "/gamedev-links"
-url: ""
+url: "https://suvitruf.github.io"
 
 exclude:
   - docs/

@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ site.description }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}/">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Suvitruf/gamedev-links/refs/heads/master/docs/Assets/table.png">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  <meta name="twitter:description" content="{{ site.description }}">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Suvitruf/gamedev-links/refs/heads/master/docs/Assets/table.png">
+  <meta name="twitter:site" content="@Suvitruf">
+
+  <!-- Additional SEO -->
+  <meta name="author" content="Suvitruf">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/">
+
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body>
