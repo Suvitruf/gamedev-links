@@ -125,7 +125,7 @@
       })
       .catch(function (err) {
         console.error("Failed to load data:", err);
-        tableBody.innerHTML = '<tr><td colspan="7">Failed to load data.</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="8">Failed to load data.</td></tr>';
       });
 
     bindEvents();
@@ -144,7 +144,7 @@
     var page = state.filteredData.slice(start, end);
 
     if (page.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="7">No results found.</td></tr>';
+      tableBody.innerHTML = '<tr><td colspan="8">No results found.</td></tr>';
       return;
     }
 
@@ -163,6 +163,7 @@
 
       html += "<tr data-index=\"" + globalIndex + "\">";
       html += "<td><a href=\"" + esc(item.Link) + "\" target=\"_blank\" rel=\"noopener\">" + esc(item.Title) + "</a></td>";
+      html += '<td title="' + esc(item.Description || "") + '">' + esc(item.Description || "") + "</td>";
       html += "<td>" + esc(item.Author) + "</td>";
       html += "<td>" + esc(item.Type) + "</td>";
       html += "<td>" + countryFlag(item.Language) + " " + esc(item.Language) + "</td>";
@@ -259,6 +260,7 @@
         state.filteredData = state.filteredData.filter(function (item) {
           var text = [
             item.Title,
+            item.Description || "",
             item.Author,
             item.Type,
             item.Language,
@@ -366,17 +368,18 @@
 
     cells[0].innerHTML = '<input type="text" class="edit-title" value="' + esc(item.Title) + '">'
       + '<input type="text" class="edit-link" value="' + esc(item.Link) + '" placeholder="URL">';
-    cells[1].innerHTML = '<input type="text" class="edit-author" value="' + esc(item.Author) + '">';
-    cells[2].innerHTML = '<select class="edit-type">'
+    cells[1].innerHTML = '<input type="text" class="edit-description" value="' + esc(item.Description || "") + '">';
+    cells[2].innerHTML = '<input type="text" class="edit-author" value="' + esc(item.Author) + '">';
+    cells[3].innerHTML = '<select class="edit-type">'
       + '<option value="article"' + (item.Type === "article" ? " selected" : "") + '>article</option>'
       + '<option value="video"' + (item.Type === "video" ? " selected" : "") + '>video</option>'
       + '<option value="site"' + (item.Type === "site" ? " selected" : "") + '>site</option>'
       + "</select>";
-    cells[3].innerHTML = '<input type="text" class="edit-language" value="' + esc(item.Language) + '" placeholder="ISO code" style="width:60px">';
-    cells[4].innerHTML = '<input type="text" class="edit-date" value="' + esc(item.Date || "01.01.1970") + '" placeholder="dd.mm.YYYY" style="width:90px">';
-    cells[5].innerHTML = '<input type="text" class="edit-tags" value="' + esc((item.Tags || []).join(", ")) + '" placeholder="comma separated">';
+    cells[4].innerHTML = '<input type="text" class="edit-language" value="' + esc(item.Language) + '" placeholder="ISO code" style="width:60px">';
+    cells[5].innerHTML = '<input type="text" class="edit-date" value="' + esc(item.Date || "01.01.1970") + '" placeholder="dd.mm.YYYY" style="width:90px">';
+    cells[6].innerHTML = '<input type="text" class="edit-tags" value="' + esc((item.Tags || []).join(", ")) + '" placeholder="comma separated">';
 
-    cells[6].innerHTML = '<div class="row-actions">'
+    cells[7].innerHTML = '<div class="row-actions">'
       + '<button class="btn-row-save" data-index="' + index + '">Save</button>'
       + '<button class="btn-row-cancel" data-index="' + index + '">Cancel</button>'
       + "</div>";
@@ -392,6 +395,7 @@
     var item = state.filteredData[index];
     item.Title = title.value.trim();
     item.Link = row.querySelector(".edit-link").value.trim();
+    item.Description = row.querySelector(".edit-description").value.trim();
     item.Author = row.querySelector(".edit-author").value.trim();
     item.Type = row.querySelector(".edit-type").value;
     item.Language = row.querySelector(".edit-language").value.trim();
@@ -407,6 +411,7 @@
     var newItem = {
       Link: "",
       Title: "New Link",
+      Description: "",
       Author: "",
       Type: "article",
       Language: "us",
