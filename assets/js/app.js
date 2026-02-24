@@ -10,6 +10,8 @@
     currentPage: 1,
     pageSize: parseInt(localStorage.getItem("pageSize"), 10) || 50,
     filters: [],    // array of { type: "tag"|"text", value: string }
+    dateFrom: "",   // "dd.mm.yyyy" or ""
+    dateTo: "",     // "dd.mm.yyyy" or ""
     editMode: false
   };
 
@@ -25,6 +27,8 @@
   var btnAdd = document.getElementById("btn-add");
   var btnCancel = document.getElementById("btn-cancel");
   var actionsHeaders = document.querySelectorAll(".col-actions");
+  var dateFromInput = document.getElementById("date-from");
+  var dateToInput = document.getElementById("date-to");
 
   // === ISO language/country code to flag emoji ===
   var langToCountry = { EN: "US", JA: "JP", KO: "KR" };
@@ -44,11 +48,25 @@
     return div.innerHTML;
   }
 
+  // === Date Parsing ===
+  function parseDMY(str) {
+    if (!str) return null;
+    var parts = str.split(".");
+    if (parts.length !== 3) return null;
+    var d = parseInt(parts[0], 10);
+    var m = parseInt(parts[1], 10) - 1;
+    var y = parseInt(parts[2], 10);
+    if (isNaN(d) || isNaN(m) || isNaN(y)) return null;
+    return new Date(y, m, d);
+  }
+
   // === URL Management ===
   function readURL() {
     var params = new URLSearchParams(window.location.search);
     var tagsParam = params.get("tags");
     var textParam = params.get("text");
+    var dateFromParam = params.get("dateFrom");
+    var dateToParam = params.get("dateTo");
 
     state.filters = [];
 
@@ -64,6 +82,13 @@
     } else {
       searchInput.value = "";
     }
+
+    state.dateFrom = dateFromParam || "";
+    state.dateTo = dateToParam || "";
+    dateFromInput.value = state.dateFrom;
+    dateToInput.value = state.dateTo;
+    if (dateFromInput._flatpickr) dateFromInput._flatpickr.setDate(parseDMY(state.dateFrom), false);
+    if (dateToInput._flatpickr) dateToInput._flatpickr.setDate(parseDMY(state.dateTo), false);
   }
 
   function syncURL() {
@@ -80,6 +105,9 @@
     if (textFilter) {
       params.set("text", textFilter.value);
     }
+
+    if (state.dateFrom) params.set("dateFrom", state.dateFrom);
+    if (state.dateTo) params.set("dateTo", state.dateTo);
 
     var qs = params.toString();
     var newURL = window.location.pathname + (qs ? "?" + qs : "");
@@ -242,8 +270,29 @@
       }
     }
 
+    // Date range filtering
+    var fromDate = parseDMY(state.dateFrom);
+    var toDate = parseDMY(state.dateTo);
+    if (fromDate || toDate) {
+      state.filteredData = state.filteredData.filter(function (item) {
+        var itemDate = parseDMY(item.Date);
+        if (!itemDate) return false;
+        if (fromDate && itemDate < fromDate) return false;
+        if (toDate && itemDate > toDate) return false;
+        return true;
+      });
+    }
+
     state.currentPage = 1;
     render();
+  }
+
+  // === Date Change ===
+  function handleDateChange() {
+    state.dateFrom = dateFromInput.value;
+    state.dateTo = dateToInput.value;
+    syncURL();
+    applySearch();
   }
 
   // === Tag Click ===
@@ -480,6 +529,18 @@
       var btn = e.target.closest(".chip-remove");
       if (!btn) return;
       removeFilter(btn.dataset.type, btn.dataset.value);
+    });
+
+    // Date pickers
+    flatpickr(dateFromInput, {
+      dateFormat: "d.m.Y",
+      allowInput: false,
+      onChange: function () { handleDateChange(); }
+    });
+    flatpickr(dateToInput, {
+      dateFormat: "d.m.Y",
+      allowInput: false,
+      onChange: function () { handleDateChange(); }
     });
 
     // Browser back/forward

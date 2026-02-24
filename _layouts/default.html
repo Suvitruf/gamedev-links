@@ -27,6 +27,7 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body>
@@ -37,6 +38,7 @@
       baseurl: "{{ site.baseurl }}"
     };
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="{{ '/assets/js/app.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>

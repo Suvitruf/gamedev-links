@@ -161,6 +161,39 @@ body {
   background: #3a56d4;
 }
 
+/* === Date Row === */
+.date-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.date-field {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.date-field label {
+  font-size: 0.85rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+.date-field input {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 140px;
+  cursor: pointer;
+}
+
+.date-field input:focus {
+  outline: none;
+  border-color: #4361ee;
+  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+}
+
 /* === Active Filters === */
 #active-filters {
   display: flex;
@@ -455,6 +488,15 @@ td select {
 
   .search-row {
     flex-direction: column;
+  }
+
+  .date-row {
+    flex-direction: column;
+  }
+
+  .date-field input {
+    width: 100%;
+    flex: 1;
   }
 
   .toolbar {
