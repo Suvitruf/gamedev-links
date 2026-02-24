@@ -12,7 +12,9 @@
     filters: [],    // array of { type: "tag"|"text", value: string }
     dateFrom: "",   // "dd.mm.yyyy" or ""
     dateTo: "",     // "dd.mm.yyyy" or ""
-    editMode: false
+    editMode: false,
+    sortBy: "Date",
+    sortDir: "desc"
   };
 
   // === DOM refs ===
@@ -89,6 +91,9 @@
     dateToInput.value = state.dateTo;
     if (dateFromInput._flatpickr) dateFromInput._flatpickr.setDate(parseDMY(state.dateFrom), false);
     if (dateToInput._flatpickr) dateToInput._flatpickr.setDate(parseDMY(state.dateTo), false);
+
+    state.sortBy = params.get("sortBy") || "Date";
+    state.sortDir = params.get("sortDir") || "desc";
   }
 
   function syncURL() {
@@ -108,6 +113,9 @@
 
     if (state.dateFrom) params.set("dateFrom", state.dateFrom);
     if (state.dateTo) params.set("dateTo", state.dateTo);
+
+    if (state.sortBy !== "Date") params.set("sortBy", state.sortBy);
+    if (state.sortDir !== "desc") params.set("sortDir", state.sortDir);
 
     var qs = params.toString();
     var newURL = window.location.pathname + (qs ? "?" + qs : "");
@@ -285,8 +293,41 @@
       });
     }
 
+    sortData();
     state.currentPage = 1;
     render();
+    updateSortIndicators();
+  }
+
+  // === Sorting ===
+  function sortData() {
+    var col = state.sortBy;
+    var dir = state.sortDir === "asc" ? 1 : -1;
+
+    state.filteredData.sort(function (a, b) {
+      if (col === "Date") {
+        var da = parseDMY(a.Date);
+        var db = parseDMY(b.Date);
+        if (!da && !db) return 0;
+        if (!da) return 1;
+        if (!db) return -1;
+        return (da - db) * dir;
+      }
+      var va = (a[col] || "").toLowerCase();
+      var vb = (b[col] || "").toLowerCase();
+      return va.localeCompare(vb) * dir;
+    });
+  }
+
+  function updateSortIndicators() {
+    var headers = document.querySelectorAll("th.sortable");
+    for (var i = 0; i < headers.length; i++) {
+      var th = headers[i];
+      th.classList.remove("sort-asc", "sort-desc");
+      if (th.dataset.sort === state.sortBy) {
+        th.classList.add(state.sortDir === "asc" ? "sort-asc" : "sort-desc");
+      }
+    }
   }
 
   // === Date Change ===
@@ -546,6 +587,21 @@
       dateFormat: "d.m.Y",
       allowInput: false,
       onChange: function () { handleDateChange(); }
+    });
+
+    // Column sorting (event delegation on thead)
+    document.querySelector("#links-table thead").addEventListener("click", function (e) {
+      var th = e.target.closest("th.sortable");
+      if (!th) return;
+      var col = th.dataset.sort;
+      if (state.sortBy === col) {
+        state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
+      } else {
+        state.sortBy = col;
+        state.sortDir = col === "Date" ? "desc" : "asc";
+      }
+      syncURL();
+      applySearch();
     });
 
     // Browser back/forward

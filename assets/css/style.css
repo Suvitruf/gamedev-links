@@ -333,6 +333,27 @@ th {
   white-space: nowrap;
 }
 
+th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+th.sortable:hover {
+  background: #2a2a4e;
+}
+
+th.sortable::after {
+  content: "";
+}
+
+th.sortable.sort-asc::after {
+  content: " \25B2";
+}
+
+th.sortable.sort-desc::after {
+  content: " \25BC";
+}
+
 tbody tr:nth-child(even) {
   background: #f9f9fb;
 }
