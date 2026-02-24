@@ -8,14 +8,14 @@ When parsing, you need to understand each type of page you are parsing:
 2. Page like https://suvitruf.ru/2021/01/18/8324/weekly-gamedev-1-17-january-2021/. A specific digest page.
 
 When parsing a listing page:
-1. Each block is inside an <article> block.
-2. Inside the <h1> header you can grab info. Grab the link when the title starts with "Недельный геймдев".
+1. Each block is inside an `<article>` block.
+2. Inside the `<h1>` header you can grab info. Grab the link when the title starts with "Недельный геймдев".
 3. Parse these links separately.
 
 When parsing a specific digest page, the needed content is inside an <article> block:
-1. **Collect digest basic info**: Inside the <h1> header you can grab info. Header format: `Недельный геймдев: #<number> — <day> <month>, <year>`.
+1. **Collect digest basic info**: Inside the `<h1>` header you can grab info. Header format: `Недельный геймдев: #<number> — <day> <month>, <year>`.
 2. Chech <h2> header. If it's something like "Обновления/релизы/новости", add type "news" for record. If it's something like "Интересные статьи/видео" and "site"/"article"/"video" depending on type.
-3. **Collect links**: Each record starts with an <h3> header. It's a material title. Inside there is usually an image or video, with some text. Grab the title, detect language by opening the link (try to take the author from here), get description (summarize it to be no more than 200 symbols).
+3. **Collect links**: Each record starts with an `<h3>` header. It's a material title. Inside there is usually an image or video, with some text. Grab the title, detect language by opening the link (try to take the author from here), get description (summarize it to be no more than 200 symbols).
 4. **Write to base**: Add new records into raw/data.json with fields: link, date, digest number, title.
 5. **Update parsed digest list**: Add to the parsed digests list in raw/processed_digests.json to track progress.
 6. Add type to records:
