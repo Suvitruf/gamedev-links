@@ -24,7 +24,7 @@ body {
 
 /* === Layout === */
 .site-content {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -40,7 +40,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -387,7 +387,7 @@ td a:hover {
 }
 
 /* === Description Column === */
-td:nth-child(3) {
+td:nth-child(5) {
   max-width: 585px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -400,7 +400,7 @@ td:nth-child(3) {
   cursor: default;
 }
 
-td:nth-child(3)[title]:hover::after {
+td:nth-child(5)[title]:hover::after {
   content: attr(title);
   position: absolute;
   left: 0;
