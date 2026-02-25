@@ -7,3 +7,4 @@ _site/
 vendor/
 __pycache__/
 raw/date_progress.json
+raw/image_progress.json

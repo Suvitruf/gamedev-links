@@ -371,8 +371,23 @@ td a:hover {
   text-decoration: underline;
 }
 
+/* === Image Column === */
+.col-image {
+  width: 150px;
+  min-width: 150px;
+  padding: 0.3rem;
+}
+
+.row-thumb {
+  display: block;
+  width: 150px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
 /* === Description Column === */
-td:nth-child(2) {
+td:nth-child(3) {
   max-width: 585px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -385,7 +400,7 @@ td:nth-child(2) {
   cursor: default;
 }
 
-td:nth-child(2)[title]:hover::after {
+td:nth-child(3)[title]:hover::after {
   content: attr(title);
   position: absolute;
   left: 0;
@@ -556,5 +571,15 @@ td select {
   .toolbar {
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .col-image {
+    width: 80px;
+    min-width: 80px;
+  }
+
+  .row-thumb {
+    width: 80px;
+    height: 32px;
   }
 }
