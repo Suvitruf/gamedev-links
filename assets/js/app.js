@@ -176,9 +176,9 @@
 
       html += "<tr data-index=\"" + globalIndex + "\">";
       html += '<td class="col-image">' + imgHtml + '</td>';
+      html += "<td><a href=\"" + esc(item.Link) + "\" target=\"_blank\" rel=\"noopener\">" + esc(item.Title) + "</a></td>";
       html += "<td>" + countryFlag(item.Language) + " " + esc(item.Language) + "</td>";
       html += "<td>" + esc(item.Date || "01.01.1970") + "</td>";
-      html += "<td><a href=\"" + esc(item.Link) + "\" target=\"_blank\" rel=\"noopener\">" + esc(item.Title) + "</a></td>";
       html += '<td title="' + esc(item.Description || "") + '">' + esc(item.Description || "") + "</td>";
       html += "<td>" + esc(item.Author) + "</td>";
       html += "<td>" + esc(item.Type) + "</td>";
@@ -414,10 +414,10 @@
     var cells = row.children;
 
     // cells[0] is Image column — not editable
-    cells[1].innerHTML = '<input type="text" class="edit-language" value="' + esc(item.Language) + '" placeholder="ISO code" style="width:60px">';
-    cells[2].innerHTML = '<input type="text" class="edit-date" value="' + esc(item.Date || "01.01.1970") + '" placeholder="dd.mm.YYYY" style="width:90px">';
-    cells[3].innerHTML = '<input type="text" class="edit-title" value="' + esc(item.Title) + '">'
+    cells[1].innerHTML = '<input type="text" class="edit-title" value="' + esc(item.Title) + '">'
       + '<input type="text" class="edit-link" value="' + esc(item.Link) + '" placeholder="URL">';
+    cells[2].innerHTML = '<input type="text" class="edit-language" value="' + esc(item.Language) + '" placeholder="ISO code" style="width:60px">';
+    cells[3].innerHTML = '<input type="text" class="edit-date" value="' + esc(item.Date || "01.01.1970") + '" placeholder="dd.mm.YYYY" style="width:90px">';
     cells[4].innerHTML = '<input type="text" class="edit-description" value="' + esc(item.Description || "") + '">';
     cells[5].innerHTML = '<input type="text" class="edit-author" value="' + esc(item.Author) + '">';
     cells[6].innerHTML = '<select class="edit-type">'
