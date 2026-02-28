@@ -72,6 +72,17 @@ body {
   opacity: 1;
 }
 
+.nav-github {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  opacity: 0.85;
+}
+
+.nav-github:hover {
+  opacity: 1;
+}
+
 .nav-dropdown {
   position: relative;
 }
