@@ -22,6 +22,12 @@ body {
   opacity: 0.85;
 }
 
+.site-description h1 {
+  font-size: inherit;
+  font-weight: normal;
+  line-height: inherit;
+}
+
 /* === Layout === */
 .site-content {
   max-width: 1600px;
