@@ -111,6 +111,14 @@
 
     state.sortBy = params.get("sortBy") || "Date";
     state.sortDir = params.get("sortDir") || "desc";
+
+    var pageSizeParam = parseInt(params.get("pageSize"), 10);
+    if (pageSizeParam > 0) {
+      state.pageSize = pageSizeParam;
+      localStorage.setItem("pageSize", state.pageSize);
+    }
+    var pageParam = parseInt(params.get("page"), 10);
+    if (pageParam > 0) state.currentPage = pageParam;
   }
 
   function syncURL() {
@@ -141,6 +149,9 @@
     if (state.sortBy !== "Date") params.set("sortBy", state.sortBy);
     if (state.sortDir !== "desc") params.set("sortDir", state.sortDir);
 
+    if (state.currentPage > 1) params.set("page", state.currentPage);
+    if (state.pageSize !== 50) params.set("pageSize", state.pageSize);
+
     var qs = params.toString();
     var newURL = window.location.pathname + (qs ? "?" + qs : "");
     history.pushState(null, "", newURL);
@@ -153,7 +164,7 @@
       .then(function (data) {
         state.allData = data;
         readURL();
-        applySearch();
+        applySearch(true);
       })
       .catch(function (err) {
         console.error("Failed to load data:", err);
@@ -235,16 +246,33 @@
 
   function renderPagination() {
     var totalPages = Math.max(1, Math.ceil(state.filteredData.length / state.pageSize));
+    var cur = state.currentPage;
+
+    // Build sorted, deduplicated array of page numbers
+    var pages = {};
+    var i;
+    // Left group: first 5
+    for (i = 1; i <= Math.min(5, totalPages); i++) pages[i] = true;
+    // Center window: cur-2 .. cur+2
+    for (i = Math.max(1, cur - 2); i <= Math.min(totalPages, cur + 2); i++) pages[i] = true;
+    // Right group: last 5
+    for (i = Math.max(1, totalPages - 4); i <= totalPages; i++) pages[i] = true;
+
+    var sorted = Object.keys(pages).map(Number).sort(function (a, b) { return a - b; });
+
     var html = "";
-
     html += buildPageSizeSelect();
-    html += '<button class="pg-prev"' + (state.currentPage <= 1 ? " disabled" : "") + '>Prev</button>';
+    html += '<button class="pg-first"' + (cur <= 1 ? " disabled" : "") + ">First</button>";
 
-    for (var p = 1; p <= totalPages; p++) {
-      html += '<button class="pg-num' + (p === state.currentPage ? " active" : "") + '" data-page="' + p + '">' + p + "</button>";
+    for (i = 0; i < sorted.length; i++) {
+      if (i > 0 && sorted[i] !== sorted[i - 1] + 1) {
+        html += '<span class="pg-ellipsis">\u2026</span>';
+      }
+      var p = sorted[i];
+      html += '<button class="pg-num' + (p === cur ? " active" : "") + '" data-page="' + p + '">' + p + "</button>";
     }
 
-    html += '<button class="pg-next"' + (state.currentPage >= totalPages ? " disabled" : "") + '>Next</button>';
+    html += '<button class="pg-last"' + (cur >= totalPages ? " disabled" : "") + ">Last</button>";
 
     paginationTop.innerHTML = html;
     paginationBottom.innerHTML = html;
@@ -282,12 +310,12 @@
       searchInput.value = "";
     }
 
-    syncURL();
     applySearch();
+    syncURL();
   }
 
   // === Search ===
-  function applySearch() {
+  function applySearch(keepPage) {
     state.filteredData = state.allData.slice();
 
     for (var i = 0; i < state.filters.length; i++) {
@@ -335,7 +363,9 @@
     }
 
     sortData();
-    state.currentPage = 1;
+    if (!keepPage) state.currentPage = 1;
+    var totalPages = Math.max(1, Math.ceil(state.filteredData.length / state.pageSize));
+    if (state.currentPage > totalPages) state.currentPage = totalPages;
     render();
     updateSortIndicators();
   }
@@ -381,8 +411,8 @@
   function handleDateChange() {
     state.dateFrom = dateFromInput.value;
     state.dateTo = dateToInput.value;
-    syncURL();
     applySearch();
+    syncURL();
   }
 
   // === Tag Click ===
@@ -395,8 +425,8 @@
       state.filters.push({ type: "tag", value: tagName });
     }
     searchInput.value = "";
-    syncURL();
     applySearch();
+    syncURL();
   }
 
   // === Site Click ===
@@ -408,8 +438,8 @@
       state.filters.push({ type: "site", value: siteName });
     }
     searchInput.value = "";
-    syncURL();
     applySearch();
+    syncURL();
   }
 
   // === Text Search ===
@@ -424,8 +454,8 @@
       state.filters.push({ type: "text", value: val });
     }
 
-    syncURL();
     applySearch();
+    syncURL();
   }
 
   // === Edit Mode ===
@@ -576,19 +606,22 @@
 
       var totalPages = Math.max(1, Math.ceil(state.filteredData.length / state.pageSize));
 
-      if (btn.classList.contains("pg-prev")) {
+      if (btn.classList.contains("pg-first")) {
         if (state.currentPage > 1) {
-          state.currentPage--;
+          state.currentPage = 1;
           render();
+          syncURL();
         }
-      } else if (btn.classList.contains("pg-next")) {
+      } else if (btn.classList.contains("pg-last")) {
         if (state.currentPage < totalPages) {
-          state.currentPage++;
+          state.currentPage = totalPages;
           render();
+          syncURL();
         }
       } else if (btn.dataset.page) {
         state.currentPage = parseInt(btn.dataset.page, 10);
         render();
+        syncURL();
       }
     }
 
@@ -601,6 +634,7 @@
         localStorage.setItem("pageSize", state.pageSize);
         state.currentPage = 1;
         render();
+        syncURL();
       }
     }
 
@@ -670,14 +704,14 @@
         state.sortBy = col;
         state.sortDir = col === "Date" ? "desc" : "asc";
       }
-      syncURL();
       applySearch();
+      syncURL();
     });
 
     // Browser back/forward
     window.addEventListener("popstate", function () {
       readURL();
-      applySearch();
+      applySearch(true);
     });
   }
 

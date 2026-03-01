@@ -545,6 +545,12 @@ td select {
   cursor: default;
 }
 
+.pagination .pg-ellipsis {
+  padding: 0.3rem 0.25rem;
+  font-size: 0.85rem;
+  user-select: none;
+}
+
 .pagination .pg-size {
   padding: 0.3rem 0.5rem;
   font-size: 0.85rem;
