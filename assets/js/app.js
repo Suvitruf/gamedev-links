@@ -9,7 +9,7 @@
     filteredData: [],
     currentPage: 1,
     pageSize: parseInt(localStorage.getItem("pageSize"), 10) || 50,
-    filters: [],    // array of { type: "tag"|"text", value: string }
+    filters: [],    // array of { type: "tag"|"text"|"site", value: string }
     dateFrom: "",   // "dd.mm.yyyy" or ""
     dateTo: "",     // "dd.mm.yyyy" or ""
     editMode: false,
@@ -50,6 +50,16 @@
     return div.innerHTML;
   }
 
+  // === Domain Extraction ===
+  function extractDomain(url) {
+    try {
+      var host = new URL(url).hostname;
+      return host.replace(/^www\./, "");
+    } catch (e) {
+      return "";
+    }
+  }
+
   // === Date Parsing ===
   function parseDMY(str) {
     if (!str) return null;
@@ -75,6 +85,13 @@
     if (tagsParam) {
       tagsParam.split(",").map(function (t) { return t.trim(); }).filter(Boolean).forEach(function (t) {
         state.filters.push({ type: "tag", value: t });
+      });
+    }
+
+    var siteParam = params.get("site");
+    if (siteParam) {
+      siteParam.split(",").map(function (s) { return s.trim(); }).filter(Boolean).forEach(function (s) {
+        state.filters.push({ type: "site", value: s });
       });
     }
 
@@ -106,6 +123,13 @@
       params.set("tags", tags.join(","));
     }
 
+    var sites = state.filters
+      .filter(function (f) { return f.type === "site"; })
+      .map(function (f) { return f.value; });
+    if (sites.length) {
+      params.set("site", sites.join(","));
+    }
+
     var textFilter = state.filters.find(function (f) { return f.type === "text"; });
     if (textFilter) {
       params.set("text", textFilter.value);
@@ -133,7 +157,7 @@
       })
       .catch(function (err) {
         console.error("Failed to load data:", err);
-        tableBody.innerHTML = '<tr><td colspan="9">Failed to load data.</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="10">Failed to load data.</td></tr>';
       });
 
     bindEvents();
@@ -152,7 +176,7 @@
     var page = state.filteredData.slice(start, end);
 
     if (page.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="9">No results found.</td></tr>';
+      tableBody.innerHTML = '<tr><td colspan="10">No results found.</td></tr>';
       return;
     }
 
@@ -177,6 +201,11 @@
       html += "<tr data-index=\"" + globalIndex + "\">";
       html += '<td class="col-image">' + imgHtml + '</td>';
       html += "<td><a href=\"" + esc(item.Link) + "\" target=\"_blank\" rel=\"noopener\">" + esc(item.Title) + "</a></td>";
+      var domain = extractDomain(item.Link);
+      var siteHtml = domain
+        ? '<a class="tag site-tag" href="?site=' + encodeURIComponent(domain) + '" data-site="' + esc(domain) + '">' + esc(domain) + '</a>'
+        : '';
+      html += "<td>" + siteHtml + "</td>";
       html += "<td>" + countryFlag(item.Language) + " " + esc(item.Language) + "</td>";
       html += "<td>" + esc(item.Date || "01.01.1970") + "</td>";
       html += '<td title="' + esc(item.Description || "") + '">' + esc(item.Description || "") + "</td>";
@@ -231,8 +260,8 @@
     var html = "";
     for (var i = 0; i < state.filters.length; i++) {
       var f = state.filters[i];
-      var label = f.type === "tag" ? f.value : f.value;
-      var prefix = f.type === "tag" ? "tag: " : "";
+      var label = f.value;
+      var prefix = f.type === "tag" ? "tag: " : f.type === "site" ? "site: " : "";
       html += '<span class="filter-chip" data-filter-type="' + esc(f.type) + '">'
         + '<span class="chip-label">' + esc(prefix) + esc(label) + '</span>'
         + '<button class="chip-remove" data-type="' + esc(f.type) + '" data-value="' + esc(f.value) + '" aria-label="Remove ' + esc(f.value) + '">&times;</button>'
@@ -245,7 +274,7 @@
   function removeFilter(type, value) {
     state.filters = state.filters.filter(function (f) {
       if (f.type !== type) return true;
-      if (type === "tag") return f.value.toLowerCase() !== value.toLowerCase();
+      if (type === "tag" || type === "site") return f.value.toLowerCase() !== value.toLowerCase();
       return false; // remove text filter
     });
 
@@ -269,6 +298,11 @@
           var itemTags = (item.Tags || []).map(function (t) { return t.toLowerCase(); });
           return itemTags.indexOf(tagLower) !== -1;
         });
+      } else if (f.type === "site") {
+        var siteLower = f.value.toLowerCase();
+        state.filteredData = state.filteredData.filter(function (item) {
+          return extractDomain(item.Link).toLowerCase() === siteLower;
+        });
       } else if (f.type === "text") {
         var term = f.value.toLowerCase().trim();
         state.filteredData = state.filteredData.filter(function (item) {
@@ -279,7 +313,8 @@
             item.Type,
             item.Language,
             item.Date || "",
-            (item.Tags || []).join(" ")
+            (item.Tags || []).join(" "),
+            extractDomain(item.Link)
           ].join(" ").toLowerCase();
           return text.indexOf(term) !== -1;
         });
@@ -358,6 +393,19 @@
     applySearch();
   }
 
+  // === Site Click ===
+  function handleSiteClick(siteName) {
+    var exists = state.filters.some(function (f) {
+      return f.type === "site" && f.value.toLowerCase() === siteName.toLowerCase();
+    });
+    if (!exists) {
+      state.filters.push({ type: "site", value: siteName });
+    }
+    searchInput.value = "";
+    syncURL();
+    applySearch();
+  }
+
   // === Text Search ===
   function handleTextSearch() {
     var val = searchInput.value.trim();
@@ -416,18 +464,19 @@
     // cells[0] is Image column — not editable
     cells[1].innerHTML = '<input type="text" class="edit-title" value="' + esc(item.Title) + '">'
       + '<input type="text" class="edit-link" value="' + esc(item.Link) + '" placeholder="URL">';
-    cells[2].innerHTML = '<input type="text" class="edit-language" value="' + esc(item.Language) + '" placeholder="ISO code" style="width:60px">';
-    cells[3].innerHTML = '<input type="text" class="edit-date" value="' + esc(item.Date || "01.01.1970") + '" placeholder="dd.mm.YYYY" style="width:90px">';
-    cells[4].innerHTML = '<input type="text" class="edit-description" value="' + esc(item.Description || "") + '">';
-    cells[5].innerHTML = '<input type="text" class="edit-author" value="' + esc(item.Author) + '">';
-    cells[6].innerHTML = '<select class="edit-type">'
+    // cells[2] is Site column — auto-derived, not editable
+    cells[3].innerHTML = '<input type="text" class="edit-language" value="' + esc(item.Language) + '" placeholder="ISO code" style="width:60px">';
+    cells[4].innerHTML = '<input type="text" class="edit-date" value="' + esc(item.Date || "01.01.1970") + '" placeholder="dd.mm.YYYY" style="width:90px">';
+    cells[5].innerHTML = '<input type="text" class="edit-description" value="' + esc(item.Description || "") + '">';
+    cells[6].innerHTML = '<input type="text" class="edit-author" value="' + esc(item.Author) + '">';
+    cells[7].innerHTML = '<select class="edit-type">'
       + '<option value="article"' + (item.Type === "article" ? " selected" : "") + '>article</option>'
       + '<option value="video"' + (item.Type === "video" ? " selected" : "") + '>video</option>'
       + '<option value="site"' + (item.Type === "site" ? " selected" : "") + '>site</option>'
       + "</select>";
-    cells[7].innerHTML = '<input type="text" class="edit-tags" value="' + esc((item.Tags || []).join(", ")) + '" placeholder="comma separated">';
+    cells[8].innerHTML = '<input type="text" class="edit-tags" value="' + esc((item.Tags || []).join(", ")) + '" placeholder="comma separated">';
 
-    cells[8].innerHTML = '<div class="row-actions">'
+    cells[9].innerHTML = '<div class="row-actions">'
       + '<button class="btn-row-save" data-index="' + index + '">Save</button>'
       + '<button class="btn-row-cancel" data-index="' + index + '">Cancel</button>'
       + "</div>";
@@ -555,6 +604,13 @@
     // Tag clicks in table (event delegation)
     tableBody.addEventListener("click", function (e) {
       var target = e.target;
+
+      // Handle site-tag link clicks
+      if (target.classList.contains("site-tag") && target.dataset.site) {
+        e.preventDefault();
+        handleSiteClick(target.dataset.site);
+        return;
+      }
 
       // Handle tag link clicks
       if (target.classList.contains("tag") && target.dataset.tag) {

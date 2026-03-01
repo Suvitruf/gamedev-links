@@ -404,7 +404,7 @@ td a:hover {
 }
 
 /* === Description Column === */
-td:nth-child(5) {
+td:nth-child(6) {
   max-width: 585px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -417,7 +417,7 @@ td:nth-child(5) {
   cursor: default;
 }
 
-td:nth-child(5)[title]:hover::after {
+td:nth-child(6)[title]:hover::after {
   content: attr(title);
   position: absolute;
   left: 0;
