@@ -354,8 +354,14 @@
         if (!db) return -1;
         return (da - db) * dir;
       }
-      var va = (a[col] || "").toLowerCase();
-      var vb = (b[col] || "").toLowerCase();
+      var va, vb;
+      if (col === "Site") {
+        va = extractDomain(a.Link).toLowerCase();
+        vb = extractDomain(b.Link).toLowerCase();
+      } else {
+        va = (a[col] || "").toLowerCase();
+        vb = (b[col] || "").toLowerCase();
+      }
       return va.localeCompare(vb) * dir;
     });
   }
