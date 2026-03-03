@@ -33,7 +33,7 @@
   var dateToInput = document.getElementById("date-to");
 
   // === ISO language/country code to flag emoji ===
-  var langToCountry = { EN: "US", JA: "JP", KO: "KR" };
+  var langToCountry = { EN: "US", JA: "JP", KO: "KR", CS: "CZ" };
 
   function countryFlag(code) {
     if (!code) return "";
