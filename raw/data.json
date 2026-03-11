@@ -109156,7 +109156,7 @@
     "Description": "Курируемый репозиторий, собирающий все материалы дайджеста, накопленные за годы.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/gamedev-links.png"
@@ -109169,7 +109169,7 @@
     "Description": "Sony поддержала предложение финансово, но FromSoftware выступила против ремейка Bloodborne от Bluepoint.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/shraier-bluepoint-remake-bloodborne-sony-protiv.jpg"
@@ -109182,8 +109182,10 @@
     "Description": "Новый рекорд онлайна для франшизы Resident Evil — более 300 тысяч одновременных игроков в Steam.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
-    "Tags": [],
+    "Type": "article",
+    "Tags": [
+      "steam"
+    ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/Resident_Evil_Requiem.png"
   },
@@ -109195,7 +109197,7 @@
     "Description": "Вавра покинул Warhorse Studios, чтобы сосредоточиться на адаптации Kingdom Come в кино или сериал.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/daniel-vavra-pokinul-warhorse-dlya-sozdaniya-filma.jpg"
@@ -109208,7 +109210,7 @@
     "Description": "Игра продалась тиражом в семь миллионов копий — данные впервые раскрыты за 18 лет.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/taketwo-raskryla-prodazhi-gta-vice-city-stories.png"
@@ -109234,7 +109236,7 @@
     "Description": "Сервис для разработчиков и дизайнеров, анализирующий отзывы игроков. Принимает заявки на ранний доступ.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/mappex.png"
@@ -109247,7 +109249,7 @@
     "Description": "Стратегический пересмотр привёл Amazon к отказу от гоночной игры с открытым миром.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/amazon-otkazalas-ot-gonochnoi-igry.jpg"
@@ -109260,7 +109262,7 @@
     "Description": "Менее 20 разработчиков остаются поддерживать провалившийся проект.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/proval-highguard-shraier-o-problemakh-razrabotki.png"
@@ -109273,7 +109275,7 @@
     "Description": "Компания надеется, что судебные процедуры помогут сохранить бизнес-операции.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/nacon-podal-zayavlenie-o-neplatezhesposobnosti.jpg"
@@ -109286,7 +109288,7 @@
     "Description": "«Ассоциация не оправдала наших ожиданий» — компания «Леста Игры» объявила о выходе из АИИ.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/assotsiatsiya-ne-opravdala-nashih-ozhidanij-kompaniya-lesta-igry-ob-yavila-chto-pokidaet-aii.png"
@@ -109299,8 +109301,10 @@
     "Description": "Цель — сделать Xbox лучшим игровым направлением.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
-    "Tags": [],
+    "Type": "social",
+    "Tags": [
+      "xbox"
+    ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/asha-sharma-o-svoem-akkaunte-xbox.jpg"
   },
@@ -109312,8 +109316,10 @@
     "Description": "Внутри компании стратегия так и не получила энтузиазма.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
-    "Tags": [],
+    "Type": "article",
+    "Tags": [
+      "xbox"
+    ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/microsoft-prekrashchaet-strategiyu-eto-tozhe-xbox.png"
   },
@@ -109325,7 +109331,7 @@
     "Description": "Штат Нью-Йорк считает лутбоксы азартными играми и подаёт иск против Valve.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/new-york-sues-valve-over-loot-boxes-which-it-claims-are-gambling.png"
@@ -109338,7 +109344,7 @@
     "Description": "HDRP переходит в режим поддержки, Built-in прекращается, разработка URP продолжается.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "news",
+    "Type": "article",
     "Tags": [
       "unity"
     ],
@@ -109356,7 +109362,8 @@
     "Type": "article",
     "Tags": [
       "unreal engine",
-      "free"
+      "free",
+      "animation"
     ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/februarys-epic-learning-content-vfx-2d-animation-and-digital-twins.png"
@@ -109369,11 +109376,11 @@
     "Description": "Библиотека анимаций для Godot, доступная на GitHub.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "site",
+    "Type": "repository",
     "Tags": [
       "godot",
-      "free",
-      "opensource"
+      "opensource",
+      "animation"
     ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/TweenFX.gif"
@@ -109400,7 +109407,9 @@
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
     "Type": "article",
-    "Tags": [],
+    "Tags": [
+      "shaders"
+    ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/1ab6982488f4823d626caa88c1198f24.png"
   },
@@ -109464,8 +109473,10 @@
     "Description": "28 тысяч вишлистов Steam через эмоциональный контент; оптимальная длина ~40 секунд; любопытство удерживает зрителя.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "article",
-    "Tags": [],
+    "Type": "social",
+    "Tags": [
+      "steam"
+    ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/18M-views.png"
   },
@@ -109478,7 +109489,9 @@
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
     "Type": "article",
-    "Tags": [],
+    "Tags": [
+      "zbrush"
+    ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/how-to-create-a-scene-of-a-dentist-treating-a-whimsical-dragon.jpeg"
   },
@@ -109601,7 +109614,10 @@
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
     "Type": "article",
-    "Tags": [],
+    "Tags": [
+      "substance",
+      "zbrush"
+    ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/creating-aged-weapon-with-realistic-texturing-using-zbrush-substance-3d.jpg"
   },
@@ -109613,7 +109629,7 @@
     "Description": "Туториал по технике физики волос в стилизованном 3D.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "article",
+    "Type": "social",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/how-to-deal-with-stylized-3d-hair-physics-in-this-short-tutorial.png"
@@ -109665,8 +109681,10 @@
     "Description": "Траектория бегового цикла повторяет форму велосипедного сиденья.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "article",
-    "Tags": [],
+    "Type": "social",
+    "Tags": [
+      "animation"
+    ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/useful-tip-on-how-to-create-run-cycle-in-animation.gif"
   },
@@ -109704,9 +109722,10 @@
     "Description": "Подход к созданию UI на шейдерах вместо графического редактора.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "article",
+    "Type": "social",
     "Tags": [
-      "godot"
+      "godot",
+      "shaders"
     ],
     "Date": "01.03.2026",
     "Image": "assets/images/267/i_dont_know_how_to_use_photoshop_or_draw_so_i.gif"
@@ -109719,9 +109738,453 @@
     "Description": "Hand-painted 3D-персонаж Резе из аниме Chainsaw Man.",
     "DigestNumber": 267,
     "DigestDate": "2026-03-01",
-    "Type": "article",
+    "Type": "social",
     "Tags": [],
     "Date": "01.03.2026",
     "Image": "assets/images/267/amazing-hand-painted-3d-take-on-chainsaw-man-s-reze.png"
+  },
+  {
+    "Link": "https://www.bloomberg.com/news/articles/2026-03-04/sony-pulls-back-from-playstation-games-on-pc?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc3MjYzMTM4OSwiZXhwIjoxNzczMjM2MTg5LCJhcnRpY2xlSWQiOiJUQkRNVTVLR1pBS0owMCIsImJjb25uZWN0SWQiOiJCMUVBQkI5NjQ2QUM0REZFQTJBRkI4MjI1MzgyQTJFQSJ9.iJ25MhKjr88ECoSb_2cT3JX9MqYduN3JmMm63yusBVE",
+    "Title": "Шрейер: Sony больше не собирается выпускать свои одиночные игры на ПК",
+    "Author": "",
+    "Language": "en",
+    "Description": "Решение принято из-за боязни, что будет сложно продавать свои устаревающие в момент релиза консоли. Но мультиплеерные тайтлы появятся на платформе.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/playstation-pc-ports-have-struggled-due-to-delayed-releases-research-firm-claims.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://tass.ru/proisshestviya/26639325",
+    "Title": "Московский суд оштрафовал студию Battlestate Games из-за нарушения закона в области персональных данных",
+    "Author": "",
+    "Language": "ru",
+    "Description": "О штрафе на 2 миллиона рублей в адрес студии авторов Escape from Tarkov сообщили в ТАСС — решение вынес Таганский районный суд Москвы.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/shtraf-dlya-battlestate-games-za-narushenie-zakona-o-personalnyh-dannyh.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://store.steampowered.com/news/group/4145017/view/528746884222682052",
+    "Title": "Valve: «Steam Machine, Steam Frame и Steam Controller выйдут в 2026 году»",
+    "Author": "",
+    "Language": "en",
+    "Description": "Вероятней всего, во 2 половине года .",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/valve-anonsirovala-vykhod-steam-machine-steam-frame-steam-controller.jpg",
+    "Type": "store",
+    "Tags": [
+      "steam"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://aftermath.site/nintendo-tariffs-sue/",
+    "Title": "Nintendo подала в суд на правительство США — из-за пошлин Дональда Трампа",
+    "Author": "Nicole Carpenter",
+    "Language": "en",
+    "Description": "В феврале Верховный суд признал их незаконными, поэтому компания добивается возмещения ущерба.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/nintendo-sud-pravitelstvo-ssha-poshliny-trampa.jpg",
+    "Type": "article",
+    "Tags": [
+      "nintendo"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.capcom.co.jp/ir/english/news/pdf/e260304.pdf",
+    "Title": "Продажи Resident Evil Requiem достигли 5 миллионов копий",
+    "Author": "",
+    "Language": "en",
+    "Description": "Меньше, чем за неделю с релиза .",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/prodazhi-resident-evil-requiem-previsili-5-millionov-kopiy.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://x.com/PlayHighguard/status/2028923492125819287",
+    "Title": "Highguard закроют 12 марта",
+    "Author": "",
+    "Language": "en",
+    "Description": "Игре не удалось удержать аудиторию .",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/zakrytie-highguard-12-marta.jpg",
+    "Type": "social",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://x.com/Xbox/status/2029646886408515623",
+    "Title": "Xbox следующего поколения получил кодовое название Project Helix",
+    "Author": "",
+    "Language": "en",
+    "Description": "Компания заявила , что на устройстве можно будет играть как в консольные, так и ПК-тайтлы.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/xbox-sleduyushchego-pokolenie-project-helix.jpg",
+    "Type": "social",
+    "Tags": [
+      "xbox"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.ubisoft.com/en-gb/game/assassins-creed/news/3DdTBz0edxZ0mQ7Ub4jv85",
+    "Title": "Подтверждённый ремейк Black Flag, патч для Unity и PvP-игра: Ubisoft о планах на серию Assassin’s Creed",
+    "Author": "",
+    "Language": "en",
+    "Description": "Новости о сериале появятся уже скоро .",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/plany-ubisoft-po-assassins-creed.jpg",
+    "Type": "article",
+    "Tags": [
+      "unity"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://x.com/CrimsonDesert_/status/2028832772568093140",
+    "Title": "Crimson Desert добавили в список желаемого более 3 миллионов игроков",
+    "Author": "",
+    "Language": "en",
+    "Description": "Ждём релиза игры уже 19 марта.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/CrimsonDesert-3mln.jpg",
+    "Type": "social",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.pcgamer.com/games/action/american-mcgee-has-come-out-of-retirement-to-make-an-alice-spiritual-successor-based-on-his-plushie-empire/",
+    "Title": "Американ Макги возвращается, чтобы создать духовного преемника Алисы, основанного на его империи плюшевых игрушек",
+    "Author": "Rick Lane",
+    "Language": "en",
+    "Description": "Есть определённое совпадение, но не такое, которое могло бы создать им проблемы с юристами.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/american-mcgee-has-come-out-of-retirement-to-make-an-alice-spiritual-successor-based-on-his-plushie-empire.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.ft.com/content/dc140eb8-77e5-4b54-b643-637f66371ec2",
+    "Title": "Власти США могут вынудить Tencent избавиться от американских игровых активов",
+    "Author": "",
+    "Language": "en",
+    "Description": "По информации Financial Times, американские власти опасаются , что такие сделки с Tencent могут представлять угрозу национальной безопасности страны.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/smi-vlasti-ssha-mogut-vy-nudit-tencent-izbavit-sya-ot-amerikanskih-igrovy-h-aktivov.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://android-developers.googleblog.com/2026/03/a-new-era-for-choice-and-openness.html",
+    "Title": "Google начал снижать комиссии ещё до вступления в силу решения по делу с Эпиками",
+    "Author": "",
+    "Language": "en",
+    "Description": "Разработчики, выбравшие систему оплаты Google Play, будут платить отдельную комиссию , специфичную для конкретного рынка. В Европейской экономической зоне (ЕЭЗ), Великобритании и США эта ставка сос...",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/a-new-era-for-choice-and-openness.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.eurogamer.net/netease-pulls-funding-of-yakuza-creators-nagoshi-studio-putting-development-of-gang-of-dragon-at-risk",
+    "Title": "NetEase прекратила финансирование студии Nagoshi Studio, создавшей серию игр Yakuza, что ставит под угрозу разработку игры Gang of Dragon",
+    "Author": "Eurogamer.net",
+    "Language": "en",
+    "Description": "Китайская мегакорпорация прекратит финансирование в мае, сообщает NetEase .",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/netease-pulls-funding-of-yakuza-creators-nagoshi-studio-putting-development-of-gang-of-dragon-at-risk.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.reddit.com/r/Unity3D/comments/1rjb3gm/3280_assets_are_being_pulled_away_from_the_asset/",
+    "Title": "Начиная с 31 марта, из Unity ассет-стора будет изъято 3280 ассетов",
+    "Author": "",
+    "Language": "en",
+    "Description": "В связи с обновлением региональных требований к лицензированию, распространению и соблюдению нормативных требований для издателей в регионе Большого Китая (включая Гонконг и Макао).",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/3280_assets_are_being_pulled_away_from_the_asset.jpg",
+    "Type": "social",
+    "Tags": [
+      "unity"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://dtf.ru/games/4825270-test-na-prohozhdenie-adventures-80-h",
+    "Title": "Более 800 игроков сдавали экзамен по прохождению адвенчуры из 80-х без подсказок — его завершили только двое",
+    "Author": "HumbleKnight",
+    "Language": "ru",
+    "Description": "Процент успешного выполнения тестирования составил 0,24% .",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/test-na-prohozhdenie-adventures-80-h.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://store.steampowered.com/news/group/4145017/view/533246780877309201",
+    "Title": "Новые мощные инструменты для настройки домашних страниц разработчиков/издателей",
+    "Author": "",
+    "Language": "en",
+    "Description": "Более совершенные инструменты для представления бренда студии и демонстрации создаваемых вами игр. Халява/раздачи/бандлы/курсы",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "",
+    "Type": "store",
+    "Tags": [
+      "steam"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://greenbook.forgamedev.ru/",
+    "Title": "РВИ опубликовала руководство по работе с нарративом в играх",
+    "Author": "",
+    "Language": "ru",
+    "Description": "Гайд называется «Зеленые страницы». Как отмечает РВИ, он охватывает обширный пул тем: от основных понятий до нюансов архитектуры диалогов и отличия нарративного дизайна от геймдизайна.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/rvi-opublikovala-rukovodstvo-po-rabote-s-narrativom-v-igrah.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://joergsla.gumroad.com/l/limbkit",
+    "Title": "Удобный аддон LimbKit для Blender, позволяющий создавать 3D-модели рук и ног",
+    "Author": "",
+    "Language": "en",
+    "Description": "Инструмент, основанный на геометрических нодах, позволяет быстро создавать наброски рук, ног (или лап) для 3D-существ и персонажей, особенно для стилизованных работ. Интересные статьи/видео",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/neat-free-blender-add-on-limbkit-generates-3d-hands-and-feet.jpg",
+    "Type": "store",
+    "Tags": [
+      "blender"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://dtf.ru/gameindustry/4822970-sozdately-mewgenics-o-rabote-s-izdatelami",
+    "Title": "[RU] «Они просто заберут деньги»: создатели Mewgenics рассказали, почему не работают с издателями",
+    "Author": "Daniel",
+    "Language": "ru",
+    "Description": "Смотрю, как на фоне высказываний Макмиллена (The Binding of Isaac, Super Meat Boy, Mewgenics) пошла очередная волна обсуждений нужны ли издатели инди-разработчикам или нет, поэтому, думаю, стоит не...",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/sozdately-mewgenics-o-rabote-s-izdatelami.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://dtf.ru/gamedev/4826831-sbornik-besplatnyh-programm-i-asetov-dlya-razrabotchikov-igr",
+    "Title": "[RU] Сборник-помощник для начинающих разработчиков игр. Бесплатные программы и ассеты (2026) Часть 1/2",
+    "Author": "Иван Михайлов",
+    "Language": "ru",
+    "Description": "Смотрим, что есть помимо Photoshop, FL Studio, 3ds Max, ZBrush, Unity.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/sbornik-besplatnyh-programm-i-asetov-dlya-razrabotchikov-igr.jpg",
+    "Type": "article",
+    "Tags": [
+      "unity",
+      "zbrush",
+      "free"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://habr.com/ru/companies/netologyru/articles/1006006/",
+    "Title": "[RU] Геймдев без иллюзий: что нужно знать заранее, если хотите создать игру",
+    "Author": "nastyanaum",
+    "Language": "ru",
+    "Description": "Когда вы хотите разработать игру, обычно начинаете с вопросов о её технической реализации. Какой движок выбрать, на каком языке программирования писать код, а может быть, вообще использовать констр...",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/gamedev-no-illusions.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://habr.com/ru/articles/1007654/",
+    "Title": "[RU] У файтингов проблема с продукт-дизайном",
+    "Author": "Николаос Тситсонис",
+    "Language": "ru",
+    "Description": "Разработчики файтингов десятилетиями полируют ядро игры (Game Design), пытаясь привлечь новую аудиторию за счёт упрощения управления и инпутов, но совершенно забывают о том, как игра должна работат...",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/fightings.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.gamesindustry.biz/how-steam-changes-and-a-china-strategy-helped-tinybuilds-the-king-is-watching-hit-500k-sales",
+    "Title": "[EN] Как изменения в Steam и стратегия в отношении Китая помогли The King is Watching достичь 500к продаж",
+    "Author": "GamesIndustry.biz",
+    "Language": "en",
+    "Description": "Алекс Ничипорчик объясняет долгосрочное видение компании относительно игры и причины, по которым проект изменил свой формат на roguelite.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/how-steam-changes-and-a-china-strategy-helped-tinybuilds-the-king-is-watching-hit-500k-sales.jpg",
+    "Type": "article",
+    "Tags": [
+      "steam"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.unrealengine.com/en-US/developer-interviews/embark-studios-build-the-award-winning-arc-raiders-with-unreal-engine",
+    "Title": "[EN] Как Embark Studios создала отмеченную наградами ARC Raiders на движке Unreal Engine",
+    "Author": "",
+    "Language": "en",
+    "Description": "В течение первых двух недель после запуска игра постоянно била собственные рекорды , превысив отметку в 462к одновременных игроков, разойдясь тиражом более 4 миллионов копий и став мировым лидером ...",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/embark-studios-build-the-award-winning-arc-raiders-with-unreal-engine.jpg",
+    "Type": "article",
+    "Tags": [
+      "unreal engine"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.gamedeveloper.com/production/clair-obscur-writer-shares-advice-that-could-improve-your-game-s-story",
+    "Title": "[EN] Сценарист Clair Obscur делится советами по разработке, которые могут улучшить сюжет вашей игры",
+    "Author": "",
+    "Language": "en",
+    "Description": "В статье Дженнифер Сведберг-Йен объясняет, как продуманный обмен информацией может помочь вашей команде .",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/clair-obscur-writer-shares-advice-that-could-improve-your-game-s-story.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.unrealengine.com/en-US/spotlights/max-and-the-midknights-nickelodeon-creates-a-stop-motion-animation-look-with-ue5",
+    "Title": "[EN] Max & the Midknights: Nickelodeon создаёт анимацию в стиле покадровой съемки с помощью UE5",
+    "Author": "",
+    "Language": "en",
+    "Description": "Новаторское использование Unreal Engine изменило всё — от построения мира до операторской работы, освещения и спецэффектов.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/max-and-the-midknights-nickelodeon-creates-a-stop-motion-animation-look-with-ue5.jpg",
+    "Type": "article",
+    "Tags": [
+      "unreal engine",
+      "animation"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://80.lv/articles/indie-team-talks-developing-survival-horror-game-inspired-by-genre-classics",
+    "Title": "[EN] Создание хоррора, вдохновлённого классикой жанра",
+    "Author": "HideWorks Games",
+    "Language": "en",
+    "Description": "Команда HideWorks рассказала об их психологическом хорроре Liminal Point, обсудив источники вдохновения, основные механики, техническую сторону разработки, маркетинг и многое другое.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/indie-team-talks-developing-survival-horror-game-inspired-by-genre-classics.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://80.lv/articles/creating-3d-hand-painted-man-with-robotic-arm",
+    "Title": "[EN] Создание модели мужчины с роботизированной рукой",
+    "Author": "Marcela Ruiz",
+    "Language": "en",
+    "Description": "Марсела Руис подробно рассказала о своём проекте по созданию текстур вручную, объяснив, как она превратила двухмерную иллюстрацию в стилизованную трёхмерную модель.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/creating-3d-hand-painted-man-with-robotic-arm.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://premortem.games/2026/03/03/solo-dev-sam-agten-sixtyfour-the-hardest-part-is-to-finish-and-release-the-game/",
+    "Title": "[EN] Инди-разработчик Сэм Агтен (Sixtyfour): «Самое сложное — закончить и выпустить игру»",
+    "Author": "Eric Bartelson",
+    "Language": "en",
+    "Description": "После нескольких лет работы над ролевой игрой о хакерстве Midnight Protocol он искал новый проект , который удовлетворил бы его стремление к техническим вызовам.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/solo-dev-sam-agten-sixtyfour-the-hardest-part-is-to-finish-and-release-the-game.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://www.darzalgames.com/in-engine-trailers/",
+    "Title": "[EN] Зачем и как создавать геймплейные трейлеры на движке игры",
+    "Author": "",
+    "Language": "en",
+    "Description": "Несколько советов инди-разработчикам.",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/screenshotTaker-small.jpg",
+    "Type": "article",
+    "Tags": [],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://x.com/KoalaOK_/status/2026243997560373589",
+    "Title": "Крутая анимация в Blender, рассказывающая историю за 4 секунды",
+    "Author": "",
+    "Language": "en",
+    "Description": "Из Твиттера .",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/incredible-blender-animation-telling-a-story-in-4-seconds.jpg",
+    "Type": "social",
+    "Tags": [
+      "blender",
+      "animation"
+    ],
+    "Date": "08.03.2026"
+  },
+  {
+    "Link": "https://x.com/Layla_3D/status/2025347049017725058",
+    "Title": "Немного сисечек из ZZZ",
+    "Author": "",
+    "Language": "en",
+    "Description": "Из Твиттера . Если хотите поддержать выход дайджеста и других материалов, сделать это можно одним из способов. На Патреоне На Boosty Через Paypal Через Яндекс.Деньги Также вы можете подписаться на ...",
+    "DigestNumber": 268,
+    "DigestDate": "2026-03-08",
+    "Image": "assets/images/268/boobs.jpg",
+    "Type": "social",
+    "Tags": [],
+    "Date": "08.03.2026"
   }
 ]
