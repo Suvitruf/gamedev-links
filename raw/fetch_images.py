@@ -182,15 +182,17 @@ def extract_image_map(html, digest_number):
     for i, match in enumerate(h3_matches):
         h3_inner = match.group(1).strip()
 
+        # Content block after h3 (needed for both link and image extraction)
+        start = match.end()
+        end = h3_matches[i + 1].start() if i + 1 < len(h3_matches) else len(article_html)
+        block_html = article_html[start:end]
+
         # Extract resource link from h3 (same logic as parse_digests.py)
         link_in_h3 = re.search(r'<a\s+href="([^"]+)"[^>]*>', h3_inner, re.DOTALL)
         if link_in_h3:
             resource_link = link_in_h3.group(1).strip()
         else:
             # Link is in the content block after h3
-            start = match.end()
-            end = h3_matches[i + 1].start() if i + 1 < len(h3_matches) else len(article_html)
-            block_html = article_html[start:end]
             block_links = re.findall(r'<a\s+href="([^"]+)"', block_html)
             resource_link = None
             for candidate in block_links:
@@ -202,6 +204,15 @@ def extract_image_map(html, digest_number):
                     continue
                 resource_link = candidate
                 break
+
+        # If still no link, check for YouTube iframe embeds
+        if not resource_link:
+            iframe_match = re.search(
+                r'<iframe[^>]+src=["\'](?:https?:)?//(?:www\.)?youtube\.com/embed/([^"\'?]+)',
+                block_html, re.IGNORECASE
+            )
+            if iframe_match:
+                resource_link = f"https://www.youtube.com/watch?v={iframe_match.group(1)}"
 
         if not resource_link:
             continue
@@ -234,6 +245,16 @@ def extract_image_map(html, digest_number):
                 if img_url not in claimed_images:
                     found_img = img_url
                     break
+
+        # If no image found and link is YouTube, use YouTube thumbnail
+        if not found_img:
+            yt_match = re.match(
+                r'https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)([^&?]+)',
+                resource_link
+            )
+            if yt_match:
+                video_id = yt_match.group(1)
+                found_img = f"https://img.youtube.com/vi/{video_id}/maxresdefault.jpg"
 
         if found_img:
             claimed_images.add(found_img)

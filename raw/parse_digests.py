@@ -158,6 +158,15 @@ def extract_resources_from_digest(html):
                 link = candidate
                 break
 
+        # If still no link, check for YouTube iframe embeds
+        if not link:
+            iframe_match = re.search(
+                r'<iframe[^>]+src=["\'](?:https?:)?//(?:www\.)?youtube\.com/embed/([^"\'?]+)',
+                block_html, re.IGNORECASE
+            )
+            if iframe_match:
+                link = f"https://www.youtube.com/watch?v={iframe_match.group(1)}"
+
         # Skip if we still have no link
         if not link:
             continue
