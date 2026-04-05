@@ -111241,5 +111241,429 @@
     "Date": "01.01.1970",
     "Type": "social",
     "Tags": []
+  },
+  {
+    "Link": "https://bsky.app/profile/gautoz.cool/post/3mi22sonplc2o",
+    "Title": "Nacon выставила на продажу студию Spiders, известную по GreedFall и Steelrising",
+    "Author": "Gauthier 'Gautoz' Andres",
+    "Language": "en",
+    "Description": "Издатель приобрёл её в 2019 году. Под её издательством студия успела выпустить Steelrising и GreedFall: The Dying World.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "27.03.2026",
+    "Image": "assets/images/271/steelrising.jpg"
+  },
+  {
+    "Link": "https://www.epicgames.com/site/en-US/news/todays-layoffs",
+    "Title": "Epic games увольняет 1000 человек — Fortnite приносит всё меньше и меньше денег",
+    "Author": "",
+    "Language": "en",
+    "Description": "Среди проблем, с которыми компания сталкивается, – общеотраслевые: замедление роста, снижение потребительских расходов; меньшие продажи современных консолей (что?) по сравнению с консолями предыдущ...",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/todays-layoffs.jpg"
+  },
+  {
+    "Link": "https://www.gamedeveloper.com/business/capcom-says-it-will-use-generative-ai-to-speed-up-production",
+    "Title": "Capcom будет использовать gen-AI для ускорения производства — но не для ассетов",
+    "Author": "",
+    "Language": "en",
+    "Description": "Компания пояснила , что не будет включать в свои игры ассеты, сгенерированные с помощью ИИ. Однако компания будет использовать технологию для «повышения эффективности процесса разработки».",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "ai"
+    ],
+    "Date": "23.03.2026",
+    "Image": "assets/images/271/capcom-ne-budet-ispolzovat-assety-ii-v-igrah.jpg"
+  },
+  {
+    "Link": "https://x.com/CrimsonDesert_/status/2036385054570717202",
+    "Title": "У Crimson Desert 3 миллиона продаж за неделю",
+    "Author": "",
+    "Language": "en",
+    "Description": "Компания читает фидбек игроков и уже выпустила первые обновления.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "social",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/CrimsonDesert-3mln-1.jpg"
+  },
+  {
+    "Link": "https://www.reddit.com/r/kingdomcome/comments/1s5vgt9/other_fired_from_warhorse_studios_and_replaced/",
+    "Title": "Переводчик с чешского на английский из Warhorse рассказал, что студия уволила его для замены ИИ",
+    "Author": "",
+    "Language": "en",
+    "Description": "Он активно выступал против использования ИИ.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "social",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/other_fired_from_warhorse_studios_and_replaced.jpg"
+  },
+  {
+    "Link": "https://store.steampowered.com/news/group/4145017/view/501722749836722405?l=russian",
+    "Title": "В Steam обновили инструменты конвертации цен",
+    "Author": "",
+    "Language": "ru",
+    "Description": "Теперь на выбор есть 3 метода : Конвертация только на базе курса обмена — этот метод использует курс обмена валют в указанное время. Конвертация только на базе покупательной способности — этот мето...",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "store",
+    "Tags": [
+      "steam"
+    ],
+    "Date": "27.03.2026",
+    "Image": "assets/images/271/steam-prices.jpg"
+  },
+  {
+    "Link": "https://mobilegamer.biz/unity-to-sell-off-supersonic-label-and-close-its-ironsource-ad-network/",
+    "Title": "Unity прекращает поддержку Ads Network и продаёт Supersonic",
+    "Author": "",
+    "Language": "en",
+    "Description": "Компания заявила , что отказ от обоих направлений бизнеса поможет стимулировать рост выручки.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "unity"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/unity-sunsetting-ads-network-and-divesting-publishing-label-supersonic.jpg"
+  },
+  {
+    "Link": "https://x.com/mousethegame/status/2036939160465137791",
+    "Title": "Mouse: P.I. for Hire добавили в список желаемого больше 1,4 миллиона раз",
+    "Author": "",
+    "Language": "en",
+    "Description": "Разработчики также прояснили некоторые моменты.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "social",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/mouse-p-i-for-hire-vishlist.jpg"
+  },
+  {
+    "Link": "https://www.gamesradar.com/games/the-elder-scrolls/todd-howard-says-leaks-dont-help-bethesda-or-players-especially-when-it-comes-to-oblivion-everyone-is-gonna-have-a-different-version/",
+    "Title": "Тодд Говард об утечках: «Они не несут пользы ни для разработчиков, ни для аудитории»",
+    "Author": "Kaan Serin",
+    "Language": "en",
+    "Description": "Разработчик считает , что незапланированное раскрытие информации вредит не только авторам, но и самим игрокам, поскольку они, так или иначе, получают интерпретацию, которая может быть неверной.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "21.03.2026",
+    "Image": "assets/images/271/todd-govard-o-utechkah-vred-dlya-razrabotchikov-i-igrokov.jpg"
+  },
+  {
+    "Link": "https://bsky.app/profile/jasonschreier.bsky.social/post/3mht6bqvru22v",
+    "Title": "PlayStation закрыла студию Dark Outlaw Games, которую возглавлял экс-соруководитель Treyarch",
+    "Author": "Jason Schreier",
+    "Language": "en",
+    "Description": "Команду основали в марте 2025 года.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "playstation"
+    ],
+    "Date": "24.03.2026",
+    "Image": "assets/images/271/zakrytie-studii-dark-outlaw-games.jpg"
+  },
+  {
+    "Link": "https://www.gamespot.com/articles/new-xbox-ceo-could-make-game-pass-less-expensive-report-says/1100-6538978/",
+    "Title": "Xbox планирует удешевить стоимость подписки Game Pass",
+    "Author": "",
+    "Language": "en",
+    "Description": "В том числе с помощью введения более бюджетных тарифов .",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "xbox"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/xbox-planiruet-snizit-stoimost-podpiski-game-pass.jpg"
+  },
+  {
+    "Link": "https://blog.playstation.com/2026/03/27/new-price-changes-for-ps5-ps5-pro-and-playstation-portal-remote-player/",
+    "Title": "Sony поднимет цены на PS5 — версия Pro будет стоить 900 долларов",
+    "Author": "",
+    "Language": "en",
+    "Description": "Изменения вступят в силу 2 апреля.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "playstation"
+    ],
+    "Date": "27.03.2026",
+    "Image": "assets/images/271/sony-uvelichit-tseny-na-ps5.jpg"
+  },
+  {
+    "Link": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/71487",
+    "Title": "Nintendo объявила о том, что цифровые издания её эксклюзивов будут дешевле физических",
+    "Author": "",
+    "Language": "en",
+    "Description": "Первой игрой с новой ценовой политикой станет Yoshi and the Mysterious Book. Халява/раздачи/бандлы/курсы",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "nintendo"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/nintendo-snizila-tseny-na-tsifrovye-izdaniya-igry.jpg"
+  },
+  {
+    "Link": "https://dtf.ru/gamedev/4914086-fab-besplatnye-assety-i-razdachi",
+    "Title": "Fab: Лимитированный контент до 7 апреля 2026го",
+    "Author": "Ярослав",
+    "Language": "ru",
+    "Description": "Новая пачка ассетов . Интересные статьи/видео",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "25.03.2026",
+    "Image": "assets/images/271/fab-besplatnye-assety-i-razdachi.jpg"
+  },
+  {
+    "Link": "https://habr.com/ru/companies/ruvds/articles/1011342/",
+    "Title": "[RU] Запускаем эмуляцию «Ну, погоди!» в Linux на слабом железе",
+    "Author": "artyomsoft",
+    "Language": "ru",
+    "Description": "Цель статьи — рассказать , с чем автор столкнулся при переносе своего эмулятора на Linux, и почему вообще не воспользовался готовым решением.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "24.03.2026",
+    "Image": "assets/images/271/wolf-rabbit.jpg"
+  },
+  {
+    "Link": "https://cyber.sports.ru/games/blogs/3392976.html",
+    "Title": "[RU] Киноязык Кодзимы: какой он режиссёр",
+    "Author": "George Yadvidchuk",
+    "Language": "ru",
+    "Description": "Про любовь Хидэо Кодзимы к кинематографу написано немало текстов. Однако редко кто задается вопросом: а какой он режиссёр? Есть ли у него стиль? Какие приёмы он использует? Для чего приглашает к се...",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/kodjima.jpg"
+  },
+  {
+    "Link": "https://habr.com/ru/articles/1014754/",
+    "Title": "[RU] Как стать разработчиком игр в 35 лет. Часть 1",
+    "Author": "Владимир",
+    "Language": "ru",
+    "Description": "История о том, как автор шёл, шёл и пришёл в текущую точку своего бытия. Это не история успешного успеха и, тем более, не настольная книга. Скорее очерк на тему.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "25.03.2026",
+    "Image": "assets/images/271/gamedev-after-35-part-1.jpg"
+  },
+  {
+    "Link": "https://habr.com/ru/articles/1016244/",
+    "Title": "[RU] Как стать разработчиком игр в 35 лет. Часть 2",
+    "Author": "Владимир",
+    "Language": "ru",
+    "Description": "Продолжение истории вкатки .",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "28.03.2026",
+    "Image": "assets/images/271/gamedev-after-35-part-2.jpg"
+  },
+  {
+    "Link": "https://dtf.ru/gamedev/4897148-animatsiya-v-unreal-engine-osnovy-dlya-novichkov",
+    "Title": "[RU] Анимация в Unreal: шпаргалка для новичков",
+    "Author": "Андрей Баронов",
+    "Language": "ru",
+    "Description": "Короткая заметка для тех кто начинает работать в Unreal с анимацией для общего понимания.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "unreal engine",
+      "animation"
+    ],
+    "Date": "23.03.2026",
+    "Image": "assets/images/271/animatsiya-v-unreal-engine-osnovy-dlya-novichkov.jpg"
+  },
+  {
+    "Link": "https://tproger.ru/news/razrabotchik-postroil-doom-na-chistom-css---rendering-bez-edinoj-s",
+    "Title": "[RU] DOOM на чистом CSS — можно поиграть прямо в браузере",
+    "Author": "",
+    "Language": "ru",
+    "Description": "Веб-разработчик Нильс Ленхер создал полноценный DOOM на чистом CSS. Каждая стена, пол, бочка и имп — это div, позиционированный в 3D-пространстве через CSS transforms. Игровая логика работает на Ja...",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "29.03.2026",
+    "Image": "assets/images/271/razrabotchik-postroil-doom-na-chistom-css-rendering-bez-edinoj-s.jpg"
+  },
+  {
+    "Link": "https://x.com/aNichiporchik/status/2036515635484869077",
+    "Title": "[EN] На фоне пробития рекордного CCU у Hello Neighbor издатель поделился метриками и обзором франшизы",
+    "Author": "",
+    "Language": "en",
+    "Description": "Основные моментики : Прошлый декабрь стал лучшим декабрем для игры в Steam с момента запуска, было продано более 60к копий. У игры более 2.2к модов в Воркшопе. Миллионы загрузок в месяц на мобильны...",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "social",
+    "Tags": [
+      "steam"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/Hello-Neighbor.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/inside-the-studio-at-thatgamecompany-an-in-depth-interview-with-studio-art-director-cecil-kim",
+    "Title": "[EN] За кулисами thatgamecompany: подробное интервью с художественным руководителем студии Сесилом Кимом",
+    "Author": "Cecil Kim",
+    "Language": "en",
+    "Description": "Сесил Ким, арт-директор студии Thatgamecompany, делится своими соображениями о художественном оформлении, производственных процессах и о том, почему игры должны иметь смысл, выходящий за рамки меха...",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "27.03.2026",
+    "Image": "assets/images/271/inside-the-studio-at-thatgamecompany-an-in-depth-interview-with-studio-art-director-cecil-kim.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=qJVELGEVRfk",
+    "Title": "[EN] От LittleBigPlanet к Dreams",
+    "Author": "@mghinto",
+    "Language": "en",
+    "Description": "Марк Хили, сооснователь Media Molecule рассказывает про свой путь.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "video",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/maxresdefault.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/breakdown-how-to-create-a-cinematic-visualization-of-a-stained-glass",
+    "Title": "[EN] Как создать кинематографическую визуализацию витража",
+    "Author": "Aleksandr Kamenshchikov",
+    "Language": "en",
+    "Description": "Александр Каменщиков рассказал о работе над проектом Unreal Stained Glass &#8212; Cinematic, о том, что его вдохновило, чего он хотел добиться с помощью анимации, и объяснил, как моделировал и текс...",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "unreal engine",
+      "animation"
+    ],
+    "Date": "25.03.2026",
+    "Image": "assets/images/271/breakdown-how-to-create-a-cinematic-visualization-of-a-stained-glass.jpg"
+  },
+  {
+    "Link": "https://matejlou.blog/2025/02/11/analytic-fog-rendering-with-volumetric-primitives/",
+    "Title": "[EN] Analytic Fog Rendering With Volumetric Primitives",
+    "Author": "View all posts by matejlou",
+    "Language": "en",
+    "Description": "Представлен аналитический подход к визуализации объёмного тумана с изменяющейся плотностью с использованием радиальных функций плотности, ограниченных геометрическими примитивами.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "11.02.2025",
+    "Image": "assets/images/271/analytic-fog-rendering-with-volumetric-primitives.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/how-to-recreate-a-stylized-toulouse-inspired-2d-environment-in-3d",
+    "Title": "[EN] Воссоздание стилизованного двухмерного окружения в стиле Тулузы в 3D",
+    "Author": "Yang Tian",
+    "Language": "en",
+    "Description": "Ян Тянь рассказала о работе над проектом «Цветущий Тулуз», объяснив, как она создавала дерево и камни, включая основные формы и детали, а также поделилась информацией о текстурировании листвы.",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [],
+    "Date": "23.03.2026",
+    "Image": "assets/images/271/how-to-recreate-a-stylized-toulouse-inspired-2d-environment-in-3d.jpg"
+  },
+  {
+    "Link": "https://www.danielpokladek.me/posts/shaders/2026/pool-ball/",
+    "Title": "[EN] Procedural Pool Balls",
+    "Author": "Daniel Pokladek",
+    "Language": "en",
+    "Description": "Использование SDF в шейдере ShaderGraph для процедурной отрисовки бильярдных шаров .",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "shaders",
+      "procedural"
+    ],
+    "Date": "17.03.2026",
+    "Image": "assets/images/271/pool-ball.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/how-a-solo-developer-created-a-cold-war-animated-series-with-ue5",
+    "Title": "[EN] Как инди-разработчик создал анимационный сериал о холодной войне с помощью UE5",
+    "Author": "Lewis Roscoe",
+    "Language": "en",
+    "Description": "Льюис Роско рассказал о проекте War at Home, объяснив, как начал анимировать его в Maya, позже перешёл на Unreal Engine, а теперь работает с ассетами, одновременно решая сложные задачи. Разное",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "article",
+    "Tags": [
+      "unreal engine",
+      "maya",
+      "animation"
+    ],
+    "Date": "27.03.2026",
+    "Image": "assets/images/271/how-a-solo-developer-created-a-cold-war-animated-series-with-ue5.jpg"
+  },
+  {
+    "Link": "https://x.com/Sakura_Rabbiter/status/2036419847870095850",
+    "Title": "Крутой водоразрез в Unity",
+    "Author": "",
+    "Language": "en",
+    "Description": "Опять годнота от Кролика .",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "social",
+    "Tags": [
+      "unity"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/this-enchanting-water-cross-section-was-created-in-unity.jpg"
+  },
+  {
+    "Link": "https://www.reddit.com/r/godot/comments/1s1mtxh/pure_gdscript_procedural_planet_with_chunked_lod/",
+    "Title": "Процедурный генератор планеты на Godot",
+    "Author": "",
+    "Language": "en",
+    "Description": "С Реддита . Если хотите поддержать выход дайджеста и других материалов, сделать это можно одним из способов. На Патреоне На Boosty Через Paypal Через Яндекс.Деньги Также вы можете подписаться на ра...",
+    "DigestNumber": 271,
+    "DigestDate": "2026-03-29",
+    "Type": "social",
+    "Tags": [
+      "godot",
+      "procedural"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/271/pure_gdscript_procedural_planet_with_chunked_lod.jpg"
   }
 ]
