@@ -3,30 +3,62 @@ name: parse
 description: Parse digest article to grab site info. Use this skill when user asks to parse digest.
 ---
 
-When parsing, you need to understand each type of page you are parsing:
-1. Page like https://suvitruf.ru/page/28/ (see "page" here?), it contains links to other pages.
-2. Page like https://suvitruf.ru/2021/01/18/8324/weekly-gamedev-1-17-january-2021/. A specific digest page.
+When user asks to parse a digest, run the unified processing script:
 
-When parsing a listing page:
-1. Each block is inside an `<article>` block.
-2. Inside the `<h1>` header you can grab info. Grab the link when the title starts with "Недельный геймдев".
-3. Parse these links separately.
+```bash
+python3 raw/process_digest.py <digest_url>
+```
 
-When parsing a specific digest page, the needed content is inside an <article> block:
-1. **Collect digest basic info**: Inside the `<h1>` header you can grab info. Header format: `Недельный геймдев: #<number> — <day> <month>, <year>`.
-2. Check `<h2>` header. If it's something like "Обновления/релизы/новости", add type "news" for record. If it's something like "Интересные статьи/видео" and "site"/"article"/"video" depending on type.
-3. **Collect links**: Each record starts with an `<h3>` header. It's a material title. Inside there is usually an image or video, with some text.
-- Grab title
-- Detect language by opening the link (try to take the author from here)
-- Get description (summarize it to be no more than 200 symbols)
-- In each block in digest check if it has an image. If has, load it and resize to 300x120 by min corner. So width should be at least 300 and height at least 120. Crop image after that to be exectly 300x120. Save cropped images into site image folder in subfolders. Subfolder name is the digest number. The file name should be the same as in digest's images. Add Image field into record with the link to this image.
-4. **Write to base**: Add new records into raw/data.json with fields: link, date, digest number, title.
-5. **Update parsed digest list**: Add to the parsed digests list in raw/processed_digests.json to track progress.
-6. Add type to records:
-- If it is site 80.lv, newsletter.gamediscover.co, habr.com, then add "article"
-- If it is video from youtube, add "video"
-7. Add tag to records:
-- If it is unrealengine.com or about Unreal Engine, add "unreal engine"
-- If it is about Unity, add "unity"
-- If it is about Godot, add "godot"
-- If it is something free or opensource, add tags "free" and "opensource"
+This script handles everything for one digest URL:
+1. Fetches the digest page
+2. Extracts all resource links (h3 blocks) with titles and descriptions
+3. Visits each resource to detect language, author, and publication date
+4. Classifies type (article/video/social/store/repository) and tags
+5. Downloads and processes thumbnail images (300x120 JPEG)
+6. Appends records to `raw/data.json`
+7. Updates `raw/processed_digests.json`
+
+## Page types
+
+1. **Listing page** (e.g. `https://suvitruf.ru/page/28/`) — contains links to digest pages. Look for `<article>` blocks with `<h1>` headers starting with "Недельный геймдев".
+2. **Digest page** (e.g. `https://suvitruf.ru/2021/01/18/8324/weekly-gamedev-1-17-january-2021/`) — the page to pass to the script.
+
+If user provides a listing page, extract the digest URLs first, then run the script for each one.
+
+## HTML structure of a digest page
+
+- Content is inside an `<article>` block
+- `<h1>` header format: `Недельный геймдев: #<number> — <day> <month>, <year>`
+- `<h2>` headers define sections (news, articles/videos)
+- `<h3>` headers are individual resource entries with title and link
+- Images are `<img>` tags with `wp-content/uploads` in src
+
+## Record format in data.json
+
+```json
+{
+  "Link": "https://...",
+  "Title": "...",
+  "Author": "...",
+  "Language": "en",
+  "Description": "...",
+  "DigestNumber": 7,
+  "DigestDate": "2021-02-28",
+  "Type": "article",
+  "Tags": ["blender"],
+  "Date": "01.01.1970",
+  "Image": "assets/images/7/filename.jpg"
+}
+```
+
+## Type classification
+
+- **video**: youtube.com, youtu.be, vimeo.com, twitch.tv
+- **social**: twitter.com, x.com, reddit.com
+- **repository**: github.com, gitlab.com
+- **store**: store.steampowered.com, store.epicgames.com, assetstore.unity.com, fab.com, itch.io, gumroad.com
+- **article**: 80.lv, habr.com, gamedeveloper.com, and default
+
+## Tag classification
+
+Tags are assigned by domain and keyword matching: unreal engine, unity, godot, blender, houdini, substance, maya, zbrush, opensource, free, steam, playstation, xbox, nintendo, ai, xr, shaders, animation, procedural.
