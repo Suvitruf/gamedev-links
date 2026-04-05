@@ -111665,5 +111665,598 @@
     ],
     "Date": "01.01.1970",
     "Image": "assets/images/271/pure_gdscript_procedural_planet_with_chunked_lod.jpg"
+  },
+  {
+    "Link": "https://www.linkedin.com/posts/eidosmontreal_mise%C3%A0-jour-deidos-montr%C3%A9al-eidos-montr%C3%A9al-activity-7444447108658597888-yTrp/",
+    "Title": "Eidos Montreal объявила об уходе руководителя Дэвида Анфосси и увольнении более 100 разработчиков",
+    "Author": "Hadi Lourari",
+    "Language": "en",
+    "Description": "В компании сообщили , что это случится в результате «пересмотра нужд в разработке».",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "30.03.2026",
+    "Image": "assets/images/272/eidos-montreal-uvolila-sotrudnikov-i-pokinul-anfossi.jpg"
+  },
+  {
+    "Link": "https://bsky.app/profile/tobyfox.undertale.com/post/3mia4smxehk2a",
+    "Title": "Тоби Фокс объяснил отсутствие локализаций Undertale и Deltarune на большинство языков — он свободно владеет только английским и японским",
+    "Author": "tobyfox",
+    "Language": "en",
+    "Description": "Для него важно лично участвовать в локализации, чтобы сохранить авторский стиль, поскольку юмор и сюжет тайтла построены на игре слов, и любой неверный перевод может исказить смысл.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "29.03.2026",
+    "Image": "assets/images/272/tobi-foks-obyasnil-otsutstvie-lokalizatsiy-undertale-i-deltarune.jpg"
+  },
+  {
+    "Link": "https://www.eurogamer.net/death-stranding-2-on-the-beachs-pc-release-takes-sequels-total-sales-past-2-million",
+    "Title": "Общие продажи Death Stranding 2 достигли двух миллионов копий после выхода на ПК",
+    "Author": "Eurogamer.net",
+    "Language": "en",
+    "Description": "Доход игры оценили в 110 миллионов долларов на PS5 и 32,6 миллиона на ПК, где доля от всех продаж составила 20%.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "playstation"
+    ],
+    "Date": "29.03.2026",
+    "Image": "assets/images/272/prodazhi-death-stranding-2-na-pk-dostigli-2-millionov-kopiy.jpg"
+  },
+  {
+    "Link": "https://insider-gaming.com/eidos-montreal-wildlands-cancellation/",
+    "Title": "Eidos отменила неанонсированную игру, на которую потратила семь лет и «сотни миллионов долларов»",
+    "Author": "Tom Henderson",
+    "Language": "en",
+    "Description": "Игра о подростке, который путешествует на огромном мифическом существе, была почти готова — релиз запланировали на конец года.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "31.03.2026",
+    "Image": "assets/images/272/eidos-otmenila-igru-wildlands.jpg"
+  },
+  {
+    "Link": "https://steamcommunity.com/games/593110/announcements/detail/526496349181445157",
+    "Title": "Valve начала тестировать широкую главную страницу магазина Steam",
+    "Author": "",
+    "Language": "en",
+    "Description": "Рекомендованные игры теперь включают более детальную информацию о том, почему их предлагают пользователю.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "steam"
+    ],
+    "Date": "01.04.2026",
+    "Image": "assets/images/272/valve-testiruet-novuyu-glavnuyu-stranitsu-magnitora-steam.jpg"
+  },
+  {
+    "Link": "https://sonyinteractive.com/en/news/blog/sony-interactive-entertainment-acquires-cinemersive-labs/",
+    "Title": "Sony купила ИИ-компанию Cinemersive Labs для улучшения графики в играх",
+    "Author": "SIE Communications",
+    "Language": "en",
+    "Description": "Sony убеждена , что возможности Cinemersive Labs пригодятся ей при работе над играми.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "02.04.2026",
+    "Image": "assets/images/272/sony-kupila-ii-kompaniyu-cinemersive-labs-dlya-uluchsheniya-grafiki-v-igrah.jpg"
+  },
+  {
+    "Link": "https://gamesfray.com/u-s-patent-examiner-rejects-nintendos-summon-subcharacter-and-let-it-fight-in-1-of-2-modes-patent-as-obvious-non-final-ruling/",
+    "Title": "В США отклонили патент Nintendo на игровую механику вызова персонажа для боя",
+    "Author": "",
+    "Language": "en",
+    "Description": "Компания может попытаться обжаловать решение.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "nintendo"
+    ],
+    "Date": "01.04.2026",
+    "Image": "assets/images/272/nintendo-patent-na-mehaniku-vyzova-personazha.jpg"
+  },
+  {
+    "Link": "https://kotaku.com/take-two-ai-zynga-layoffs-gta-2000684344",
+    "Title": "ИИ-подразделение Take-Two накрыла волна увольнений",
+    "Author": "Ethan Gach",
+    "Language": "en",
+    "Description": "Об увольнениях написал в LinkedIn Люк Дикен (Luke Dicken), до недавнего времени занимавший пост главы ИИ-подразделения Take-Two.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "02.04.2026",
+    "Image": "assets/images/272/Take-Two-ai.jpg"
+  },
+  {
+    "Link": "https://unigine.com/ru/news/2026/unigine-sdk-2-21-released-new-animation-system-ai-ready-workflow-and-major-performance-gains/",
+    "Title": "Релиз UNIGINE SDK 2.21",
+    "Author": "",
+    "Language": "en",
+    "Description": "Появилась новая система анимации с визуальным редактором, улучшена работа с ИИ и производительность, добавлены новые шаблоны и многое другое .",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "animation"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/unigine-sdk-2-21-released-new-animation-system-ai-ready-workflow-and-major-performance-gains.jpg"
+  },
+  {
+    "Link": "https://www.linkedin.com/feed/update/urn:li:activity:7445533101012811776/",
+    "Title": "Raven Software покинул её сооснователь — он проработал в студии 36 лет",
+    "Author": "Warren Spector",
+    "Language": "en",
+    "Description": "Брайан Раффел объявил о своем уходе из Raven Software. Он решил, что настала пора уйти на пенсию и хорошо отдохнуть.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "02.04.2026",
+    "Image": "assets/images/272/raven-software-pokinul-ee-soosnovatel-on-prorabotal-v-studii-36-let.jpg"
+  },
+  {
+    "Link": "https://www.pcgamer.com/gaming-industry/mechwarrior-studio-piranha-games-lays-off-30-percent-of-its-employees/",
+    "Title": "В студии авторов MechWarrior 5 сократили 17 разработчиков — это 30% команды",
+    "Author": "Andy Chalk",
+    "Language": "en",
+    "Description": "В краткосрочной перспективе Piranha Games продолжит работать над франшизой. В мае планируется релиз недавно анонсированного дополнения MechWarrior 5: Mercenaries — Chaos Reign, а осенью студия соби...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "02.04.2026",
+    "Image": "assets/images/272/sokrashcheniya-v-piranha-games-mechwarrior-5.jpg"
+  },
+  {
+    "Link": "https://www.unrealengine.com/en-US/learning/marchs-epic-learning-content-substrate-metahuman-and-more",
+    "Title": "Мартовский обучающий контент от Эпиков",
+    "Author": "",
+    "Language": "en",
+    "Description": "Substrate, MetaHuman и другое . Интересные статьи/видео",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "unreal engine"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/marchs-epic-learning-content-substrate-metahuman-and-more.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=K31KwMa6zgA",
+    "Title": "[RU] Разговор про Pathologic 3 с нарративным директором Ice-Pick Lodge",
+    "Author": "@AnarantShowONE",
+    "Language": "en",
+    "Description": "Сколько переживаний было связано с релизом игры? Что послужило вдохновением для сцен в Pathologic 3? Как на диалоги повлияла литература? Какая философия у серии Pathologic? Об этом, а также о реали...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "video",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/maxresdefault.jpg"
+  },
+  {
+    "Link": "https://habr.com/ru/articles/1018126/",
+    "Title": "[RU] Ускоряем игру «Жизнь» с помощью CUDA / Triton",
+    "Author": "PatientZero",
+    "Language": "ru",
+    "Description": "Рассмотрена реализация конвеевской игры «Жизнь» при помощи графической карты. Автор поэкспериментировал с разными библиотеками и методиками, чтобы понять, как обеспечить наилучшую производительность.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "02.04.2026",
+    "Image": "assets/images/272/life-cuda.jpg"
+  },
+  {
+    "Link": "https://habr.com/ru/companies/pvs-studio/articles/1017018/",
+    "Title": "[RU] Песочница ошибок: проверка игрового движка S&Box",
+    "Author": "Глеб Асламов",
+    "Language": "ru",
+    "Description": "Рынок современных игровых движков постепенно расширяется, и всё больше студий выбирают не кого-то из двух гигантов, а движки поменьше. В статье рассматривается S&#038;Box. И это случай, когда нович...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "30.03.2026",
+    "Image": "assets/images/272/sbox.jpg"
+  },
+  {
+    "Link": "https://dtf.ru/games/4924770-intervyu-s-razrabotchikom-quite-a-ride",
+    "Title": "[RU] На двухколесном друге: Интервью с разработчиком Quite a Ride",
+    "Author": "Рыцарь Тотошка",
+    "Language": "ru",
+    "Description": "Путешествия на велосипеде по жутким местам, тревожное изучение мира на своих двоих, а ещё &#8212; милая собака !",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "31.03.2026",
+    "Image": "assets/images/272/intervyu-s-razrabotchikom-quite-a-ride.jpg"
+  },
+  {
+    "Link": "https://habr.com/ru/articles/1010088/",
+    "Title": "[RU] Как сделать голосовых NPC в Unity с помощью LLM: Пошаговое руководство",
+    "Author": "Тимур Мушарапов",
+    "Language": "ru",
+    "Description": "В обычных RPG NPC работают по простой схеме: дерево диалогов, заранее написанные ответы, триггеры квестов. Это работает — но всегда чувствуется , что персонаж живёт по сценарию.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "unity"
+    ],
+    "Date": "16.03.2026",
+    "Image": "assets/images/272/AI-unity.jpg"
+  },
+  {
+    "Link": "https://steamcommunity.com/games/738520/announcements/detail/535505450660004997?l=russian",
+    "Title": "[RU] Разработчики Breathedge 2 рассказал о механиках, смещении акцентов и прочему интересному",
+    "Author": "",
+    "Language": "ru",
+    "Description": "Помимо прочего, стало известно , что выход игры в раннем доступе запланирован на третий квартал текущего года.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "03.04.2026",
+    "Image": "assets/images/272/obzor-breathedge-2-mehaniki-i-problemy.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=h80ws9pyY8A",
+    "Title": "[EN] Balancy webinar #16: Magic Sort & ZooBlox Sort deconstructed",
+    "Author": "",
+    "Language": "en",
+    "Description": "В видео Balancy рассматривает, как Magic Sort и ZooBlox Sort подходят к системам прогресса, монетизации и событий, и как эти решения влияют на игровой опыт игроков с течением времени.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "video",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/maxresdefault_2.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/inside-the-magic-of-machine-learning-that-powers-enemy-ai-in-arc-raiders",
+    "Title": "[EN] ML-магия, лежащей в основе ИИ врагов в Arc Raiders",
+    "Author": "Martin Singh-Blom",
+    "Language": "en",
+    "Description": "Мартин Сингх-Блом, руководитель ML-направления в Embark Studios, объясняет , как команда применила исследования в области робототехники, программировании ИИ и физ. системы, для создания более динам...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "31.03.2026",
+    "Image": "assets/images/272/inside-the-magic-of-machine-learning-that-powers-enemy-ai-in-arc-raiders.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=-NtGEpfzgzY",
+    "Title": "[EN] Создание Disco Elysium: Часть шестая — Последствия",
+    "Author": "@ElectronsSoul",
+    "Language": "en",
+    "Description": "В заключительном эпизоде документалки рассмотрены бурные события, происходящие после запуска игры, то, как судебные органы и общественное мнение продолжают формировать эту историю, и уроки, которые...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "video",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/maxresdefault_3.jpg"
+  },
+  {
+    "Link": "https://blog.runevision.com/2026/03/fast-and-gorgeous-erosion-filter.html",
+    "Title": "[EN] Fast and Gorgeous Erosion Filter",
+    "Author": "",
+    "Language": "en",
+    "Description": "В посте объясняется техника эрозии, над которой автор работал последние восемь месяцев.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/fast-and-gorgeous-erosion-filter.jpg"
+  },
+  {
+    "Link": "https://github.com/NVIDIA-RTX/RTXNTC",
+    "Title": "[EN] How to Build Practical Applications Powered by RTX Neural Shaders",
+    "Author": "NVIDIA-RTX",
+    "Language": "en",
+    "Description": "Вместо презы DLSS 5 лучше пообсуждать вот такие прикладные выступления. Тут про нейронный шейдинг. Сцена Tuscan Villa при использовании BCn занимает 6.5 VRAM, с NTC форматом меньше гига. NTC формат...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "repository",
+    "Tags": [
+      "opensource",
+      "shaders"
+    ],
+    "Date": "01.01.1970",
+    "Image": ""
+  },
+  {
+    "Link": "https://80.lv/articles/best-practices-for-bringing-your-unity-game-to-steam-deck",
+    "Title": "[EN] Рекомендации по переносу игры, созданной на Unity, на Steam Deck",
+    "Author": "Josh Steinhauer-Li",
+    "Language": "en",
+    "Description": "Джош Штайнхауэр-Ли рассказал про проблемы оптимизации Ardenfall, инди-RPG, вдохновленной серией Elder Scrolls, под Steam Deck, а также о внедрении поддержки контроллера и поделилился ценными советами.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "unity",
+      "steam"
+    ],
+    "Date": "31.03.2026",
+    "Image": "assets/images/272/best-practices-for-bringing-your-unity-game-to-steam-deck.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=MILJzR0x3IY",
+    "Title": "[EN] Неужели Zelda изменилась навсегда",
+    "Author": "@mitwhitgaming7722",
+    "Language": "en",
+    "Description": "Рассмотрены две разные эпохи франшизы, автор пытается понять, почему Nintendo пошла на такой переход, и что может произойти дальше.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "video",
+    "Tags": [
+      "nintendo"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/maxresdefault_4.jpg"
+  },
+  {
+    "Link": "https://www.gamesindustry.biz/we-arent-just-still-going-we-are-growing-how-the-division-2-has-attracted-more-players-than-ever-seven-years-on-from-release",
+    "Title": "[EN] «Мы не просто продолжаем работать, мы растём»: как The Division 2 привлекла больше игроков, чем когда-либо, спустя 7 лет после релиза",
+    "Author": "GamesIndustry.biz",
+    "Language": "en",
+    "Description": "Компания Massive Entertainment рассказывает о продлении жизни The Division 2 во время работы над The ​​Division 3 — и почему уход руководителя франшизы Джулиана Герайти «не является отвлекающим фак...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "01.04.2026",
+    "Image": "assets/images/272/we-arent-just-still-going-we-are-growing-how-the-division-2-has-attracted-more-players-than-ever-seven-years-on-from-release.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=o86rWZlF30g",
+    "Title": "[EN] Отличный и ужасный UX/AI в играх",
+    "Author": "@evan8542",
+    "Language": "en",
+    "Description": "Жесточайшая битва за звание обладателя самых продуманных туториалов, оригинальных элементов пользовательского интерфейса и удачного расположения камеры в играх.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "video",
+    "Tags": [
+      "ai"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/maxresdefault_5.jpg"
+  },
+  {
+    "Link": "https://unity.com/blog/scaling-workflows-lessons-from-medium-to-large-projects",
+    "Title": "[EN] Масштабирование рабочих процессов в Unity: уроки средних и крупных проектов",
+    "Author": "",
+    "Language": "en",
+    "Description": "Пост от Mega Cat Studios, в котором они делятся своим опытом работы с Unity и решениями реальных задач в области разработки коммерческих игр.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "unity"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/scaling-workflows-lessons-from-medium-to-large-projects.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=TvANdWa7RnM",
+    "Title": "[EN] Considerations for a Stat System — Things That Are Harder",
+    "Author": "@SylviusTheMad",
+    "Language": "en",
+    "Description": "Хорошее обзорное видео по статам в игре и о том, как лучше проектировать подобную систему.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "video",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/maxresdefault_6.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/crafting-a-stylized-fishing-village-with-zbrush-gaea-unreal-engine",
+    "Title": "[EN] Создание стилизованной рыбацкой деревни с помощью ZBrush, Gaea и Unreal Engine",
+    "Author": "Cristian Iurasciuc",
+    "Language": "en",
+    "Description": "Кристиан Юрашиук подробно рассказывает о своем модульном рабочем процессе, ключевых элементах окружения и методах создания атмосферного освещения, используемых для создания масштабных локаций с пом...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "unreal engine",
+      "zbrush"
+    ],
+    "Date": "01.04.2026",
+    "Image": "assets/images/272/crafting-a-stylized-fishing-village-with-zbrush-gaea-unreal-engine.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=hO5bzaVEr9Y",
+    "Title": "[EN] NoClip Creator Danny O’Dwyer Interview — Human Can Opener Podcast",
+    "Author": "@JamrockHobo",
+    "Language": "en",
+    "Description": "Интервью с Дэнни О&#8217;Двайером о его карьере и тому, как от начал содавать документалки в NoClip.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "video",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/maxresdefault_7.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/creating-realistic-character-inspired-by-12th-century-mongolian-warriors",
+    "Title": "[EN] Создание реалистичных персонажей, вдохновлённых монгольскими воинами XII века",
+    "Author": "Sands Kopaei",
+    "Language": "en",
+    "Description": "Сэндс Копаи подробно рассказал о создании Warrior of the East, шаг за шагом описав весь процесс и поделившись практическими советами.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "03.04.2026",
+    "Image": "assets/images/272/creating-realistic-character-inspired-by-12th-century-mongolian-warriors.jpg"
+  },
+  {
+    "Link": "https://www.unrealengine.com/en-US/developer-interviews/a-stealthy-octopus-takes-center-stage-in-the-cinematic-25d-platformer-darwins-paradox",
+    "Title": "[EN] A stealthy octopus takes center stage in the cinematic 2.5D platformer Darwin’s Paradox",
+    "Author": "",
+    "Language": "en",
+    "Description": "Какие факторы, по мнению команды ZDT, повлияли на создание игры, и какие ключевые компоненты Unreal Engine 5 оказали наибольшее воздействие во время разработки? Epic games пообщались с креативным а...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "unreal engine"
+    ],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/a-stealthy-octopus-takes-center-stage-in-the-cinematic-25d-platformer-darwins-paradox.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=eC7eS0_O8ng",
+    "Title": "[EN] Документальный фильм о создании оригинальной Modern Warfare 3",
+    "Author": "@JakeBaldino",
+    "Language": "en",
+    "Description": "Видео длится два часа и содержит интервью с ключевыми разработчиками игры.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "video",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/maxresdefault_8.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/how-to-design-a-medieval-european-environment-using-unreal-engine-and-substance-3d",
+    "Title": "[EN] Создание средневекового европейского пейзажа с помощью Unreal Engine и Substance 3D",
+    "Author": "Brian Pentz",
+    "Language": "en",
+    "Description": "Брайан Пентц рассказал о средневековой сцене , поделившись используемым им алгоритмом моделирования зданий, способом создания растительности, применением Substance 3D для текстурирования, а также о...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "unreal engine",
+      "substance"
+    ],
+    "Date": "30.03.2026",
+    "Image": "assets/images/272/how-to-design-a-medieval-european-environment-using-unreal-engine-and-substance-3d.jpg"
+  },
+  {
+    "Link": "https://defold.com/2026/04/02/Creator-Spotlight-Orenji-Spark/",
+    "Title": "[EN] От Unity до Defold — как Orenji Spark воссоздала Jane’s Fashion Studio для Poki",
+    "Author": "Defold Foundation",
+    "Language": "en",
+    "Description": "Иван из Orenji Spark рассказал о своём десятилетнем пути разработки мобильных и веб-приложений к созданию независимых игр, а также о воссоздании Jane’s Fashion Studio на Defold.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [
+      "unity"
+    ],
+    "Date": "02.04.2026",
+    "Image": "assets/images/272/Creator-Spotlight-Orenji-Spark.jpg"
+  },
+  {
+    "Link": "https://www.youtube.com/watch?v=lXxmIw9axWw",
+    "Title": "[EN] Разработка опенворлд-движка для N64 для игр масштаба Skyrim",
+    "Author": "@AndrewClunn",
+    "Language": "en",
+    "Description": "Джеймс Ламберт, наиболее известный по демейку Portal 64, работающему на настоящей консоли N64, выпустил видео, в котором подробно рассказывается о его последнем проекте, созданном на игровом джеме,...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "video",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/maxresdefault_9.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/how-an-indie-studio-portrayed-alien-abductions-and-depression-in-a-horror-game",
+    "Title": "[EN] Как инди-студия изобразила похищения инопланетянами и депрессию в хорроре",
+    "Author": "Haunting Humans Studio",
+    "Language": "en",
+    "Description": "Студия Haunting Humans рассказала о Who Are You, научно-фантастическом психологическом хорроре, объяснив, что они хотели выразить с помощью этой игры, и как сотрудничали с психологом и специалистам...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "02.04.2026",
+    "Image": "assets/images/272/how-an-indie-studio-portrayed-alien-abductions-and-depression-in-a-horror-game.jpg"
+  },
+  {
+    "Link": "https://80.lv/articles/running-with-scissors-ceo-on-the-evolution-of-postal-and-being-a-self-publishing-studio",
+    "Title": "[EN] CEO Running With Scissors о эволюции Postal  и о том, каково быть самоиздаюзейся студией",
+    "Author": "Vince Desi",
+    "Language": "en",
+    "Description": "Винс Дези рассказал о том, как в 1996 году появился Postal, о противоречиях, связанных с игрой, а также о рынке игр, дистрибуции и о том, как изменился процесс разработки игр за эти годы.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "03.04.2026",
+    "Image": "assets/images/272/running-with-scissors-ceo-on-the-evolution-of-postal-and-being-a-self-publishing-studio.jpg"
+  },
+  {
+    "Link": "https://medium.com/@reinigdavid/old-school-rendering-rant-tomb-raider-913f7837de7e",
+    "Title": "[EN] Old school rendering rant — Tomb Raider",
+    "Author": "",
+    "Language": "en",
+    "Description": "Рассматриваются методы рендеринга ранней эры 3D-игр, в этот раз на примере Tomb Raider III.",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/old-school-rendering-rant-tomb-raider.jpg"
+  },
+  {
+    "Link": "https://www.ludicon.com/castano/blog/2026/03/hardware-image-compression/",
+    "Title": "[EN] Аппаратное сжатие изображений",
+    "Author": "",
+    "Language": "en",
+    "Description": "В статье сравниваются три аппаратных формата сжатия изображений с потерями: Apple Metal lossy, ARM AFRC и ImgTec PVRIC4. Разное",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "article",
+    "Tags": [],
+    "Date": "28.03.2026",
+    "Image": "assets/images/272/hardware-image-compression.jpg"
+  },
+  {
+    "Link": "https://x.com/RasenNeko/status/2038376150188392793",
+    "Title": "Надеваем чулочки и на завод",
+    "Author": "",
+    "Language": "en",
+    "Description": "Из Твиттера .",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "social",
+    "Tags": [],
+    "Date": "01.01.1970",
+    "Image": "assets/images/272/you-have-to-see-this-soft-body-physics-simulation.jpg"
+  },
+  {
+    "Link": "https://old.reddit.com/r/Unity3D/comments/1sah9mv/here_is_how_i_made_the_liquid_in_a_bottleeffect/",
+    "Title": "Liquid in a bottle",
+    "Author": "",
+    "Language": "en",
+    "Description": "С Реддита . Если хотите поддержать выход дайджеста и других материалов, сделать это можно одним из способов. На Патреоне На Boosty Через Paypal Через Яндекс.Деньги Также вы можете подписаться на ра...",
+    "DigestNumber": 272,
+    "DigestDate": "2026-04-05",
+    "Type": "social",
+    "Tags": [],
+    "Date": "02.04.2026",
+    "Image": "assets/images/272/here_is_how_i_made_the_liquid_in_a_bottleeffect.jpg"
   }
 ]
