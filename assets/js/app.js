@@ -211,7 +211,16 @@
 
       html += "<tr data-index=\"" + globalIndex + "\">";
       html += '<td class="col-image">' + imgHtml + '</td>';
-      html += "<td><a href=\"" + esc(item.Link) + "\" target=\"_blank\" rel=\"noopener\">" + esc(item.Title) + "</a></td>";
+      var titleCell = '<a href="' + esc(item.Link) + '" target="_blank" rel="noopener">' + esc(item.Title) + '</a>';
+      if (item.WaybackURL) {
+        titleCell += ' <a class="archive-link" href="' + esc(item.WaybackURL)
+                  + '" target="_blank" rel="noopener" title="View archived snapshot">\uD83D\uDDC4</a>';
+      } else if (item.Link) {
+        titleCell += ' <a class="archive-link archive-link-muted" href="https://web.archive.org/web/*/'
+                  + encodeURI(item.Link)
+                  + '" target="_blank" rel="noopener" title="Search Wayback Machine for snapshots">\uD83D\uDDC4</a>';
+      }
+      html += "<td>" + titleCell + "</td>";
       var domain = extractDomain(item.Link);
       var siteHtml = domain
         ? '<a class="tag site-tag" href="?site=' + encodeURIComponent(domain) + '" data-site="' + esc(domain) + '">' + esc(domain) + '</a>'

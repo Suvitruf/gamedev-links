@@ -8,11 +8,13 @@ Usage: python process_digest.py <digest_url>
 Requires: Pillow (pip install Pillow)
 """
 
+import argparse
 import json
 import re
 import os
 import sys
 import io
+import time
 import urllib.request
 import urllib.error
 import ssl
@@ -39,6 +41,14 @@ DIGEST_TIMEOUT = 15
 MAX_WORKERS = 5
 IMAGE_WORKERS = 3
 DEFAULT_DATE = "01.01.1970"
+
+# --- Wayback Machine archival ---
+ARCHIVE_WORKERS = 2
+ARCHIVE_TIMEOUT = 180
+ARCHIVE_RETRY_BACKOFF = 30
+ARCHIVE_RETRIES = 2
+ARCHIVE_RETRY_SLEEP = 10
+SPN_ENDPOINT = "https://web.archive.org/save/"
 
 # --- Image ---
 TARGET_W = 300
@@ -497,6 +507,61 @@ def process_single_resource(res):
 
 
 # ============================================================
+# Wayback Machine archival
+# ============================================================
+
+def archive_to_wayback(url):
+    """Submit URL to Save Page Now, return snapshot URL or ''.
+
+    Retries on transient failures: timeouts and 5xx responses (SPN often
+    returns 520/523 from its Cloudflare layer when under load). 429 triggers
+    a longer backoff. Other HTTP errors are treated as permanent.
+    """
+    req = urllib.request.Request(
+        SPN_ENDPOINT + url,
+        headers={
+            "User-Agent": "Mozilla/5.0 gamedev-links-archiver",
+            "Accept": "text/html,*/*",
+        },
+        method="GET",
+    )
+    last_err = ""
+    for attempt in range(ARCHIVE_RETRIES + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=ARCHIVE_TIMEOUT, context=ssl_ctx) as resp:
+                content_location = resp.headers.get("Content-Location") or ""
+                if content_location.startswith("/web/"):
+                    return "https://web.archive.org" + content_location
+
+                final_url = resp.geturl()
+                if "/web/" in final_url:
+                    return final_url
+
+                body = resp.read(4096).decode("utf-8", "ignore")
+                m = re.search(r'/web/(\d{14})/', body)
+                if m:
+                    return f"https://web.archive.org/web/{m.group(1)}/{url}"
+                return ""
+        except urllib.error.HTTPError as e:
+            last_err = f"HTTPError {e.code}"
+            if e.code == 429:
+                time.sleep(ARCHIVE_RETRY_BACKOFF)
+                continue
+            if 500 <= e.code < 600 and attempt < ARCHIVE_RETRIES:
+                time.sleep(ARCHIVE_RETRY_SLEEP)
+                continue
+            break
+        except Exception as e:
+            last_err = str(e)
+            if attempt < ARCHIVE_RETRIES:
+                time.sleep(ARCHIVE_RETRY_SLEEP)
+                continue
+            break
+    print(f"  [WARN] SPN failed for {url}: {last_err}")
+    return ""
+
+
+# ============================================================
 # Classification
 # ============================================================
 
@@ -694,11 +759,13 @@ def download_and_process_image(img_url, save_path):
 # ============================================================
 
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: python process_digest.py <digest_url>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Process a single weekly gamedev digest.")
+    parser.add_argument("digest_url", help="URL of the digest page")
+    parser.add_argument("--skip-archive", action="store_true",
+                        help="Skip Wayback Machine archival step")
+    args = parser.parse_args()
 
-    digest_url = sys.argv[1]
+    digest_url = args.digest_url
 
     # Load existing state
     data = load_json(DATA_FILE, [])
@@ -773,8 +840,30 @@ def main():
             "Tags": classify_tags(domain, text),
             "Date": res.get("Date", DEFAULT_DATE),
             "Image": "",
+            "WaybackURL": "",
         }
         new_records.append(record)
+
+    # Archive to Wayback Machine
+    if args.skip_archive:
+        print("Skipping Wayback Machine archival (--skip-archive)")
+    else:
+        print(f"Archiving {len(new_records)} URLs to Wayback Machine (this may take several minutes)...")
+        with ThreadPoolExecutor(max_workers=ARCHIVE_WORKERS) as executor:
+            futures = {executor.submit(archive_to_wayback, r["Link"]): r for r in new_records}
+            done = 0
+            for future in as_completed(futures):
+                done += 1
+                record = futures[future]
+                try:
+                    record["WaybackURL"] = future.result() or ""
+                except Exception as e:
+                    print(f"  [WARN] Archive task error for {record['Link']}: {e}")
+                    record["WaybackURL"] = ""
+                if done % 5 == 0:
+                    print(f"  Archived {done}/{len(new_records)}...")
+        archived = sum(1 for r in new_records if r["WaybackURL"])
+        print(f"Archived {archived}/{len(new_records)} URLs")
 
     # Download and process images
     print("Downloading images...")

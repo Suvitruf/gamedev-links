@@ -606,3 +606,25 @@ td select {
     height: 32px;
   }
 }
+
+a.archive-link {
+  display: inline-block;
+  margin-left: 0.3rem;
+  font-size: 0.85em;
+  text-decoration: none;
+  opacity: 0.55;
+  vertical-align: middle;
+}
+
+a.archive-link:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+a.archive-link-muted {
+  opacity: 0.3;
+}
+
+a.archive-link-muted:hover {
+  opacity: 0.8;
+}
