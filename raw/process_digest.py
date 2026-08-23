@@ -19,7 +19,7 @@ import urllib.request
 import urllib.error
 import ssl
 from html import unescape
-from urllib.parse import urlparse
+from urllib.parse import urlparse, quote
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 try:
@@ -41,6 +41,7 @@ DIGEST_TIMEOUT = 15
 MAX_WORKERS = 5
 IMAGE_WORKERS = 3
 DEFAULT_DATE = "01.01.1970"
+CDX_TIMEOUT = 20
 
 # --- Wayback Machine archival ---
 ARCHIVE_WORKERS = 2
@@ -61,6 +62,12 @@ MONTHS_RU = {
     "января": 1, "февраля": 2, "марта": 3, "апреля": 4,
     "мая": 5, "июня": 6, "июля": 7, "августа": 8,
     "сентября": 9, "октября": 10, "ноября": 11, "декабря": 12,
+}
+
+# --- English months (3-letter prefixes) ---
+MONTHS_EN = {
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+    "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
 }
 
 # --- SSL (some old resource links have expired certs) ---
@@ -372,6 +379,22 @@ def parse_date_string(raw):
         if 1990 <= year <= 2030 and 1 <= month <= 12 and 1 <= day <= 31:
             return f"{day:02d}.{month:02d}.{year}"
 
+    # Textual English: "15 Mar, 2022" / "15 March 2022" (Steam release dates etc.)
+    m = re.search(r'\b(\d{1,2})\s+([A-Za-z]{3,9})\.?,?\s+(\d{4})\b', raw)
+    if m:
+        day, year = int(m.group(1)), int(m.group(3))
+        month = MONTHS_EN.get(m.group(2)[:3].lower())
+        if month and 1990 <= year <= 2030 and 1 <= day <= 31:
+            return f"{day:02d}.{month:02d}.{year}"
+
+    # Textual English: "Mar 15, 2022" / "March 15 2022"
+    m = re.search(r'\b([A-Za-z]{3,9})\.?\s+(\d{1,2}),?\s+(\d{4})\b', raw)
+    if m:
+        day, year = int(m.group(2)), int(m.group(3))
+        month = MONTHS_EN.get(m.group(1)[:3].lower())
+        if month and 1990 <= year <= 2030 and 1 <= day <= 31:
+            return f"{day:02d}.{month:02d}.{year}"
+
     return None
 
 
@@ -392,54 +415,205 @@ def extract_date_from_url(url):
     return None
 
 
+META_TAG_RE = re.compile(r'<meta\b[^>]*>', re.IGNORECASE)
+META_ATTR_RE = re.compile(r'([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*(["\'])(.*?)\2', re.DOTALL)
+
+# (attribute, value) pairs of <meta> tags that carry a publication date,
+# in priority order. Values are compared lowercase.
+META_DATE_KEYS = [
+    ("property", "article:published_time"),
+    ("name", "article:published_time"),
+    ("itemprop", "datepublished"),      # youtube
+    ("itemprop", "uploaddate"),         # youtube, vimeo
+    ("itemprop", "datecreated"),
+    ("property", "og:published_time"),
+    ("property", "video:release_date"),
+    ("name", "date"),
+    ("name", "pubdate"),
+    ("name", "publishdate"),
+    ("name", "publish_date"),
+    ("name", "publish-date"),
+    ("name", "publication_date"),
+    ("name", "publication-date"),
+    ("name", "dc.date"),
+    ("name", "dc.date.issued"),
+    ("name", "dcterms.date"),
+    ("name", "article:published"),
+    ("name", "parsely-pub-date"),
+    ("name", "sailthru.date"),
+]
+
+
+def extract_meta_dates(html):
+    """Parse all <meta> tags, return {(attr, lowercase value): content}.
+
+    Attribute-order independent, tolerant of extra attributes (nonce,
+    data-rh, etc.) that break naive adjacency regexes.
+    """
+    found = {}
+    for tag in META_TAG_RE.findall(html):
+        attrs = {name.lower(): val for name, _, val in META_ATTR_RE.findall(tag)}
+        content = attrs.get("content", "").strip()
+        if not content:
+            continue
+        for key_attr in ("property", "name", "itemprop"):
+            val = attrs.get(key_attr)
+            if val:
+                found.setdefault((key_attr, val.strip().lower()), content)
+    return found
+
+
 def extract_date_from_html(html, url):
     """Extract publication date from HTML content."""
-    # Strategy 1: Open Graph article:published_time
-    m = re.search(
-        r'<meta\s+(?:property=["\']article:published_time["\']\s+content=["\']([^"\']+)["\']'
-        r'|content=["\']([^"\']+)["\']\s+property=["\']article:published_time["\'])',
-        html, re.IGNORECASE
-    )
-    if m:
-        raw = m.group(1) or m.group(2)
-        parsed = parse_date_string(raw)
-        if parsed:
-            return parsed
-
-    # Strategy 2: Various meta name date tags
-    for name in ["date", "pubdate", "DC.date.issued", "publish_date", "article:published"]:
-        m = re.search(
-            r'<meta\s+(?:name=["\']' + re.escape(name) + r'["\']\s+content=["\']([^"\']+)["\']'
-            r'|content=["\']([^"\']+)["\']\s+name=["\']' + re.escape(name) + r'["\'])',
-            html, re.IGNORECASE
-        )
-        if m:
-            raw = m.group(1) or m.group(2)
+    # Strategy 1: <meta> tags (Open Graph, itemprop microdata, name= variants)
+    meta_dates = extract_meta_dates(html)
+    for key in META_DATE_KEYS:
+        raw = meta_dates.get(key)
+        if raw:
             parsed = parse_date_string(raw)
             if parsed:
                 return parsed
 
-    # Strategy 3: JSON-LD datePublished
+    # Strategy 2: JSON-LD datePublished / uploadDate / dateCreated
     ld_blocks = re.findall(
         r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
         html, re.DOTALL | re.IGNORECASE
     )
-    for block in ld_blocks:
-        m = re.search(r'"datePublished"\s*:\s*"([^"]+)"', block)
-        if m:
-            parsed = parse_date_string(m.group(1))
-            if parsed:
-                return parsed
+    for ld_key in ("datePublished", "uploadDate", "dateCreated"):
+        for block in ld_blocks:
+            m = re.search(r'"' + ld_key + r'"\s*:\s*"([^"]+)"', block)
+            if m:
+                parsed = parse_date_string(m.group(1))
+                if parsed:
+                    return parsed
 
-    # Strategy 4: <time datetime="..."> elements
-    time_matches = re.findall(r'<time[^>]+datetime=["\']([^"\']+)["\']', html, re.IGNORECASE)
+    # Strategy 3: datetime="..." on any element (<time>, github <relative-time>, ...)
+    time_matches = re.findall(r'<[a-zA-Z][^>]*\sdatetime=["\']([^"\']+)["\']', html, re.IGNORECASE)
     for raw in time_matches:
+        parsed = parse_date_string(raw)
+        if parsed:
+            return parsed
+
+    # Strategy 4: data-*date* attributes (e.g. godotengine data-post-date)
+    data_matches = re.findall(r'\sdata-[a-zA-Z-]*date[a-zA-Z-]*=["\']([^"\']+)["\']', html, re.IGNORECASE)
+    for raw in data_matches:
         parsed = parse_date_string(raw)
         if parsed:
             return parsed
 
     # Strategy 5: URL path patterns
     return extract_date_from_url(url)
+
+
+# ============================================================
+# Domain-specific date fallbacks
+# ============================================================
+
+TWEET_STATUS_RE = re.compile(r'(?:twitter\.com|x\.com)/[^/]+/status(?:es)?/(\d+)', re.IGNORECASE)
+TWITTER_EPOCH_MS = 1288834974657
+GITHUB_REPO_RE = re.compile(r'https?://(?:www\.)?github\.com/([^/?#]+)/([^/?#]+)/?(?:[?#].*)?$')
+TELEGRAM_POST_RE = re.compile(r'https?://t\.me/[^/?#]+/\d+', re.IGNORECASE)
+
+
+def date_from_tweet_url(url):
+    """Decode timestamp from tweet snowflake ID. Works offline, even when
+    twitter/x.com blocks the fetch."""
+    m = TWEET_STATUS_RE.search(url)
+    if not m:
+        return None
+    tweet_id = int(m.group(1))
+    if tweet_id < (1 << 22):  # pre-snowflake IDs (before Nov 2010)
+        return None
+    ts = ((tweet_id >> 22) + TWITTER_EPOCH_MS) / 1000.0
+    t = time.gmtime(ts)
+    if 2010 <= t.tm_year <= 2030:
+        return f"{t.tm_mday:02d}.{t.tm_mon:02d}.{t.tm_year}"
+    return None
+
+
+def date_from_steam_page(html):
+    """Steam store pages carry the release date as text:
+    <div class="release_date">...<div class="date">15 Mar, 2022</div>"""
+    m = re.search(r'class="release_date".{0,500}?class="date">\s*([^<]+)<', html, re.DOTALL)
+    if m:
+        return parse_date_string(m.group(1))
+    return None
+
+
+def date_from_telegram_embed(url):
+    """t.me post pages hide the date; the ?embed=1 variant has <time datetime>."""
+    if not TELEGRAM_POST_RE.match(url):
+        return None
+    html = fetch_html(url.split("?")[0] + "?embed=1", timeout=RESOURCE_TIMEOUT)
+    if not html:
+        return None
+    m = re.search(r'<time[^>]+datetime=["\']([^"\']+)["\']', html, re.IGNORECASE)
+    if m:
+        return parse_date_string(m.group(1))
+    return None
+
+
+def date_from_github_api(url):
+    """Repo root pages render no dates; the API exposes created_at."""
+    m = GITHUB_REPO_RE.match(url)
+    if not m:
+        return None
+    owner, repo = m.group(1), m.group(2)
+    if owner.lower() in ("topics", "orgs", "sponsors", "collections", "features", "about"):
+        return None
+    raw = fetch_url(f"https://api.github.com/repos/{owner}/{repo}", timeout=RESOURCE_TIMEOUT)
+    if not raw:
+        return None
+    try:
+        created = json.loads(raw).get("created_at", "")
+    except Exception:
+        return None
+    return parse_date_string(created)
+
+
+def date_from_wayback_cdx(url):
+    """Last resort: date of the earliest Wayback Machine snapshot. An upper
+    bound on the publication date — approximate, but far better than 1970."""
+    api = ("https://web.archive.org/cdx/search/cdx?url=" + quote(url, safe="") +
+           "&output=json&fl=timestamp&filter=statuscode:200&limit=1")
+    raw = fetch_url(api, timeout=CDX_TIMEOUT)
+    if not raw:
+        # CDX gets slow under concurrent queries; one retry catches most misses
+        time.sleep(5)
+        raw = fetch_url(api, timeout=CDX_TIMEOUT)
+    if not raw:
+        return None
+    try:
+        rows = json.loads(raw)
+        ts = rows[1][0]  # rows[0] is the header
+    except Exception:
+        return None
+    m = re.match(r'(\d{4})(\d{2})(\d{2})', ts)
+    if m:
+        return parse_date_string(f"{m.group(1)}-{m.group(2)}-{m.group(3)}")
+    return None
+
+
+def extract_date_fallbacks(url, html):
+    """Domain-specific fallbacks, tried when generic HTML extraction fails."""
+    date = date_from_tweet_url(url)
+    if date:
+        return date
+
+    if html and "store.steampowered.com" in url:
+        date = date_from_steam_page(html)
+        if date:
+            return date
+
+    date = date_from_telegram_embed(url)
+    if date:
+        return date
+
+    date = date_from_github_api(url)
+    if date:
+        return date
+
+    return date_from_wayback_cdx(url)
 
 
 # ============================================================
@@ -499,6 +673,12 @@ def process_single_resource(res):
         url_date = extract_date_from_url(url)
         if url_date:
             date = url_date
+
+    # Domain-specific fallbacks (tweet IDs, steam, telegram, github API, wayback)
+    if date == DEFAULT_DATE:
+        fallback_date = extract_date_fallbacks(url, html)
+        if fallback_date:
+            date = fallback_date
 
     res["Language"] = language
     res["Author"] = author
@@ -822,6 +1002,9 @@ def main():
                 res.setdefault("Author", "")
                 res.setdefault("Date", DEFAULT_DATE)
                 print(f"  [WARN] Error processing {res['Link']}: {e}")
+
+    dated = sum(1 for res in resources if res.get("Date", DEFAULT_DATE) != DEFAULT_DATE)
+    print(f"Dates resolved for {dated}/{len(resources)} resources")
 
     # Build final records with classification
     new_records = []
