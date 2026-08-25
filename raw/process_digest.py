@@ -571,11 +571,21 @@ def date_from_github_api(url):
     return parse_date_string(created)
 
 
+WAYBACK_TOOLBAR_RE = re.compile(
+    r'<!-- BEGIN WAYBACK TOOLBAR INSERT -->.*?<!-- END WAYBACK TOOLBAR INSERT -->',
+    re.DOTALL,
+)
+
+
 def date_from_wayback_cdx(url):
-    """Last resort: date of the earliest Wayback Machine snapshot. An upper
-    bound on the publication date — approximate, but far better than 1970."""
+    """Last resort: the Wayback Machine. Finds the earliest snapshot, tries to
+    extract the real publication date from the archived page content, and
+    falls back to the snapshot timestamp (an upper bound on publication).
+
+    Note: no server-side statuscode filter — it makes CDX queries drastically
+    slower and timeout-prone; fetch a few rows and pick client-side instead."""
     api = ("https://web.archive.org/cdx/search/cdx?url=" + quote(url, safe="") +
-           "&output=json&fl=timestamp&filter=statuscode:200&limit=1")
+           "&output=json&fl=timestamp,statuscode&limit=5")
     raw = fetch_url(api, timeout=CDX_TIMEOUT)
     if not raw:
         # CDX gets slow under concurrent queries; one retry catches most misses
@@ -584,14 +594,38 @@ def date_from_wayback_cdx(url):
     if not raw:
         return None
     try:
-        rows = json.loads(raw)
-        ts = rows[1][0]  # rows[0] is the header
+        rows = json.loads(raw)[1:]  # first row is the header
     except Exception:
         return None
-    m = re.match(r'(\d{4})(\d{2})(\d{2})', ts)
-    if m:
-        return parse_date_string(f"{m.group(1)}-{m.group(2)}-{m.group(3)}")
-    return None
+    ts = None
+    for row in rows:
+        status = row[1] if len(row) > 1 else ""
+        if status[:1] in ("2", "3"):
+            ts = row[0]
+            break
+    if ts is None and rows:
+        ts = rows[0][0]
+    if not ts or not re.match(r'\d{8}', ts):
+        return None
+
+    snap_date = parse_date_string(f"{ts[0:4]}-{ts[4:6]}-{ts[6:8]}")
+
+    # The archived page usually preserves the original date markup — a real
+    # publication date beats the snapshot-time approximation
+    snap_url = f"https://web.archive.org/web/{ts}/{url}"
+    snap_html = fetch_html(snap_url, timeout=30)
+    if not snap_html:
+        time.sleep(5)
+        snap_html = fetch_html(snap_url, timeout=30)
+    if snap_html:
+        content_date = extract_date_from_html(WAYBACK_TOOLBAR_RE.sub("", snap_html), url)
+        if content_date:
+            day, month, year = content_date.split(".")
+            # sanity: publication cannot postdate the capture
+            if year + month + day <= ts[:8]:
+                return content_date
+
+    return snap_date
 
 
 def extract_date_fallbacks(url, html):
