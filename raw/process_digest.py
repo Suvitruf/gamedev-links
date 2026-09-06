@@ -1045,11 +1045,17 @@ def main():
     for res in resources:
         domain = get_domain(res["Link"])
         text = res.get("Title", "") + " " + res.get("Description", "")
+        language = res.get("Language", "en")
+        # The digest author's [RU]/[EN] title prefix is authoritative
+        if res["Title"].startswith("[RU]"):
+            language = "ru"
+        elif res["Title"].startswith("[EN]"):
+            language = "en"
         record = {
             "Link": res["Link"],
             "Title": res["Title"],
             "Author": res.get("Author", ""),
-            "Language": res.get("Language", "en"),
+            "Language": language,
             "Description": res.get("Description", ""),
             "DigestNumber": number,
             "DigestDate": date,
