@@ -53,7 +53,7 @@ If user provides a listing page, extract the digest URLs first, then run the scr
 
 ## Type classification
 
-- **video**: youtube.com, youtu.be, vimeo.com, twitch.tv
+- **video**: youtube.com, youtu.be, vimeo.com, twitch.tv, vkvideo.ru, vk.com/video-… links
 - **social**: twitter.com, x.com, reddit.com
 - **repository**: github.com, gitlab.com
 - **store**: store.steampowered.com, store.epicgames.com, assetstore.unity.com, fab.com, itch.io, gumroad.com

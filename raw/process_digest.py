@@ -64,6 +64,8 @@ MONTHS_RU = {
     "сентября": 9, "октября": 10, "ноября": 11, "декабря": 12,
 }
 
+MONTHS_RU_ABBR = {k[:3]: v for k, v in MONTHS_RU.items()}
+
 # --- English months (3-letter prefixes) ---
 MONTHS_EN = {
     "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
@@ -76,7 +78,9 @@ ssl_ctx.check_hostname = False
 ssl_ctx.verify_mode = ssl.CERT_NONE
 
 # --- Type classification domains ---
-VIDEO_DOMAINS = {"youtube.com", "youtu.be", "vimeo.com", "twitch.tv"}
+VIDEO_DOMAINS = {"youtube.com", "youtu.be", "vimeo.com", "twitch.tv", "vkvideo.ru"}
+# Sites whose <html lang> (or stub page) says "en" while the content is Russian
+RU_SITE_DOMAINS = {"vk.com", "vk.ru", "vkvideo.ru"}
 SOCIAL_DOMAINS = {"twitter.com", "x.com", "reddit.com"}
 ARTICLE_DOMAINS = {
     "80.lv", "habr.com", "dtf.ru", "gamedeveloper.com",
@@ -105,14 +109,17 @@ RE_UE5 = re.compile(r"\bUE5\b")
 # Shared utilities
 # ============================================================
 
-def fetch_url(url, timeout=DIGEST_TIMEOUT):
-    """Fetch a URL and return raw bytes."""
+BROWSER_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
+}
+
+
+def fetch_url(url, timeout=DIGEST_TIMEOUT, headers=None):
+    """Fetch a URL and return raw bytes. `headers` extends the browser defaults."""
     try:
-        req = urllib.request.Request(url, headers={
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                          "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
-        })
+        req = urllib.request.Request(url, headers={**BROWSER_HEADERS, **(headers or {})})
         with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
             return resp.read()
     except Exception as e:
@@ -120,9 +127,20 @@ def fetch_url(url, timeout=DIGEST_TIMEOUT):
         return None
 
 
-def fetch_html(url, timeout=DIGEST_TIMEOUT):
+def fetch_headers(url, timeout=DIGEST_TIMEOUT):
+    """HEAD request; returns the response headers (case-insensitive) or None."""
+    try:
+        req = urllib.request.Request(url, headers=BROWSER_HEADERS, method="HEAD")
+        with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
+            return resp.headers
+    except Exception as e:
+        print(f"  [WARN] Failed to HEAD {url}: {e}")
+        return None
+
+
+def fetch_html(url, timeout=DIGEST_TIMEOUT, headers=None):
     """Fetch a URL and return decoded HTML string."""
-    raw = fetch_url(url, timeout)
+    raw = fetch_url(url, timeout, headers)
     if raw is None:
         return None
     try:
@@ -206,6 +224,8 @@ def extract_resources_from_digest(html):
         start = match.end()
         end = h3_matches[i + 1].start() if i + 1 < len(h3_matches) else len(article_html)
         block_html = article_html[start:end]
+        # The last entry of a section runs into the next <h2> header: cut it off
+        block_html = re.split(r'<h2[\s>]', block_html, maxsplit=1)[0]
 
         # Find link in block if not in h3
         if not link:
@@ -281,6 +301,8 @@ def extract_image_map(html):
         start = match.end()
         end = h3_matches[i + 1].start() if i + 1 < len(h3_matches) else len(article_html)
         block_html = article_html[start:end]
+        # The last entry of a section runs into the next <h2> header: cut it off
+        block_html = re.split(r'<h2[\s>]', block_html, maxsplit=1)[0]
 
         # Extract resource link (same logic as extract_resources_from_digest)
         link_in_h3 = re.search(r'<a\s+href="([^"]+)"[^>]*>', h3_inner, re.DOTALL)
@@ -571,6 +593,144 @@ def date_from_github_api(url):
     return parse_date_string(created)
 
 
+VK_WALL_RE = re.compile(r'https?://(?:m\.)?vk\.(?:com|ru)/wall(-?\d+_\d+)', re.IGNORECASE)
+VK_VIDEO_RE = re.compile(r'https?://(?:(?:m\.)?vk\.(?:com|ru)|vkvideo\.ru)/video(-?\d+)_(\d+)', re.IGNORECASE)
+STEAMDB_APP_RE = re.compile(r'https?://(?:www\.)?steamdb\.info/app/(\d+)', re.IGNORECASE)
+STEAMDB_RELEASE_WINDOW_DAYS = 90
+STEAM_AGE_GATE_COOKIE = "birthtime=568022401; lastagecheckage=1-January-1988; wants_mature_content=1"
+
+# Digest date (YYYY-MM-DD) of the run in progress; lets fallbacks sanity-check results
+CURRENT_DIGEST_DATE = None
+
+
+def date_from_unix(ts):
+    """Unix timestamp -> dd.mm.YYYY (UTC); None for implausible or future values."""
+    try:
+        ts = int(ts)
+    except (TypeError, ValueError):
+        return None
+    if ts > time.time():
+        return None
+    t = time.gmtime(ts)
+    if 2000 <= t.tm_year <= 2030:
+        return f"{t.tm_mday:02d}.{t.tm_mon:02d}.{t.tm_year}"
+    return None
+
+
+def parse_vk_rel_date(text, ref_date=None):
+    """VK's human-readable stamp: "8 Oct at 2:42 pm", "8 Oct 2025", "today at
+    2:42 pm", "yesterday ...", or Russian "8 окт в 14:42", "сегодня в 14:42".
+    A missing year means the most recent occurrence on or before `ref_date`
+    (the digest date, else today)."""
+    text = text.strip().lower()
+    ref = time.strptime(ref_date or CURRENT_DIGEST_DATE or time.strftime("%Y-%m-%d"), "%Y-%m-%d")
+    ref_days = time.mktime(ref) // 86400
+    if text.startswith(("today", "сегодня")):
+        return time.strftime("%d.%m.%Y", time.gmtime())
+    if text.startswith(("yesterday", "вчера")):
+        return time.strftime("%d.%m.%Y", time.gmtime(time.time() - 86400))
+    m = re.match(r'(\d{1,2})\s+([a-zа-яё]{3,})\.?(?:\s+(\d{4}))?', text)
+    if not m:
+        return None
+    day = int(m.group(1))
+    month = MONTHS_EN.get(m.group(2)[:3]) or MONTHS_RU_ABBR.get(m.group(2)[:3])
+    if not month or not 1 <= day <= 31:
+        return None
+    year = int(m.group(3)) if m.group(3) else ref.tm_year
+    if not m.group(3):
+        try:
+            if time.mktime(time.strptime(f"{year}-{month:02d}-{day:02d}", "%Y-%m-%d")) // 86400 > ref_days:
+                year -= 1
+        except ValueError:
+            return None
+    if 2000 <= year <= 2030:
+        return f"{day:02d}.{month:02d}.{year}"
+    return None
+
+
+def date_from_vk(url):
+    """m.vk.ru serves a stub page and vkvideo.ru redirect-loops without
+    cookies. The desktop wall page carries the post time as data-date="<unix>"
+    or, in its other markup variant, as a <span class="rel_date"> text stamp;
+    the video embed page has "date":<unix>."""
+    m = VK_WALL_RE.match(url)
+    if m:
+        page_url = f"https://vk.com/wall{m.group(1)}"
+    else:
+        m = VK_VIDEO_RE.match(url)
+        if not m:
+            return None
+        page_url = f"https://vk.com/video_ext.php?oid={m.group(1)}&id={m.group(2)}"
+    html = fetch_html(page_url, timeout=RESOURCE_TIMEOUT)
+    if not html:
+        return None
+    # data-date is the post's own attribute; "date" keys also appear on the wall
+    # page as expiry stamps in the future, which date_from_unix rejects
+    for ts in re.findall(r'\sdata-date=["\'](\d{9,10})["\']', html):
+        date = date_from_unix(ts)
+        if date:
+            return date
+    for text in re.findall(r'rel_date[^>]*>([^<]+)<', html):
+        date = parse_vk_rel_date(text)
+        if date:
+            return date
+    for ts in re.findall(r'"date"\s*:\s*(\d{9,10})\b', html):
+        date = date_from_unix(ts)
+        if date:
+            return date
+    return None
+
+
+def date_from_enthub(html):
+    """enthub.it renders no publication date (client-side app). The story
+    cover image is uploaded when the story is created, so its Last-Modified
+    header is the closest available proxy."""
+    m = re.search(r'<meta[^>]+property=["\']og:image["\'][^>]*>', html, re.IGNORECASE)
+    if not m:
+        return None
+    src = re.search(r'content=["\']([^"\']+)["\']', m.group(0))
+    if not src:
+        return None
+    headers = fetch_headers(src.group(1), timeout=RESOURCE_TIMEOUT)
+    if not headers:
+        return None
+    return parse_date_string(headers.get("Last-Modified", ""))
+
+
+def days_before_digest(date, digest_date=None):
+    """Days from `date` (dd.mm.YYYY) to the digest date (YYYY-MM-DD); None if unknown."""
+    digest_date = digest_date or CURRENT_DIGEST_DATE
+    if not digest_date:
+        return None
+    try:
+        a = time.mktime(time.strptime(digest_date, "%Y-%m-%d"))
+        b = time.mktime(time.strptime(date, "%d.%m.%Y"))
+    except ValueError:
+        return None
+    return (a - b) / 86400
+
+
+def date_from_steamdb(url):
+    """steamdb.info returns 403 to scripts, and the first Wayback snapshot of a
+    charts page predates the game's release, so the CDX date is meaningless.
+    Digest items linking SteamDB charts are about a launch, so use the Steam
+    release date when it falls shortly before the digest."""
+    m = STEAMDB_APP_RE.match(url)
+    if not m:
+        return None
+    html = fetch_html(f"https://store.steampowered.com/app/{m.group(1)}/",
+                      timeout=RESOURCE_TIMEOUT, headers={"Cookie": STEAM_AGE_GATE_COOKIE})
+    if not html:
+        return None
+    release = date_from_steam_page(html)
+    if not release:
+        return None
+    delta = days_before_digest(release)
+    if delta is not None and not (0 <= delta <= STEAMDB_RELEASE_WINDOW_DAYS):
+        return None
+    return release
+
+
 WAYBACK_TOOLBAR_RE = re.compile(
     r'<!-- BEGIN WAYBACK TOOLBAR INSERT -->.*?<!-- END WAYBACK TOOLBAR INSERT -->',
     re.DOTALL,
@@ -647,6 +807,19 @@ def extract_date_fallbacks(url, html):
     if date:
         return date
 
+    date = date_from_vk(url)
+    if date:
+        return date
+
+    if html and get_domain(url) == "enthub.it":
+        date = date_from_enthub(html)
+        if date:
+            return date
+
+    if STEAMDB_APP_RE.match(url):
+        # Wayback is useless for charts pages (see date_from_steamdb)
+        return date_from_steamdb(url)
+
     return date_from_wayback_cdx(url)
 
 
@@ -708,7 +881,11 @@ def process_single_resource(res):
         if url_date:
             date = url_date
 
-    # Domain-specific fallbacks (tweet IDs, steam, telegram, github API, wayback)
+    if is_ru_site(url):
+        language = "ru"
+
+    # Domain-specific fallbacks (tweet IDs, steam, telegram, github API, VK,
+    # enthub, steamdb, wayback)
     if date == DEFAULT_DATE:
         fallback_date = extract_date_fallbacks(url, html)
         if fallback_date:
@@ -788,7 +965,17 @@ def get_domain(link):
         return ""
 
 
-def classify_type(domain):
+def domain_in(domain, domains):
+    return domain in domains or any(domain.endswith("." + d) for d in domains)
+
+
+def is_ru_site(url):
+    return domain_in(get_domain(url), RU_SITE_DOMAINS)
+
+
+def classify_type(domain, link=""):
+    if link and VK_VIDEO_RE.match(link):
+        return "video"
     if domain in VIDEO_DOMAINS:
         return "video"
     if domain in SOCIAL_DOMAINS:
@@ -999,6 +1186,8 @@ def main():
         sys.exit(1)
 
     print(f"Digest #{number}, date: {date}")
+    global CURRENT_DIGEST_DATE
+    CURRENT_DIGEST_DATE = date
 
     # Check if already processed
     if str(number) in progress:
@@ -1059,7 +1248,7 @@ def main():
             "Description": res.get("Description", ""),
             "DigestNumber": number,
             "DigestDate": date,
-            "Type": classify_type(domain),
+            "Type": classify_type(domain, res["Link"]),
             "Tags": classify_tags(domain, text),
             "Date": res.get("Date", DEFAULT_DATE),
             "Image": "",
