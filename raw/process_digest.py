@@ -224,8 +224,9 @@ def extract_resources_from_digest(html):
         start = match.end()
         end = h3_matches[i + 1].start() if i + 1 < len(h3_matches) else len(article_html)
         block_html = article_html[start:end]
-        # The last entry of a section runs into the next <h2> header: cut it off
-        block_html = re.split(r'<h2[\s>]', block_html, maxsplit=1)[0]
+        # The last entry of a section runs into the next <h2> header, and the
+        # last entry of the digest runs into the <hr/> footer: cut both off
+        block_html = re.split(r'<h2[\s>]|<hr[\s/>]', block_html, maxsplit=1)[0]
 
         # Find link in block if not in h3
         if not link:
@@ -301,8 +302,9 @@ def extract_image_map(html):
         start = match.end()
         end = h3_matches[i + 1].start() if i + 1 < len(h3_matches) else len(article_html)
         block_html = article_html[start:end]
-        # The last entry of a section runs into the next <h2> header: cut it off
-        block_html = re.split(r'<h2[\s>]', block_html, maxsplit=1)[0]
+        # The last entry of a section runs into the next <h2> header, and the
+        # last entry of the digest runs into the <hr/> footer: cut both off
+        block_html = re.split(r'<h2[\s>]|<hr[\s/>]', block_html, maxsplit=1)[0]
 
         # Extract resource link (same logic as extract_resources_from_digest)
         link_in_h3 = re.search(r'<a\s+href="([^"]+)"[^>]*>', h3_inner, re.DOTALL)
