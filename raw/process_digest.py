@@ -595,7 +595,8 @@ def date_from_github_api(url):
     return parse_date_string(created)
 
 
-VK_WALL_RE = re.compile(r'https?://(?:m\.)?vk\.(?:com|ru)/wall(-?\d+_\d+)', re.IGNORECASE)
+# Direct /wall<id> links and modal forms like vk.ru/<slug>?w=wall<id> or ?z=wall<id>
+VK_WALL_RE = re.compile(r'https?://(?:m\.)?vk\.(?:com|ru)/(?:wall|[^\s?#]*\?(?:[^\s#&]*&)*[wz]=wall)(-?\d+_\d+)', re.IGNORECASE)
 VK_VIDEO_RE = re.compile(r'https?://(?:(?:m\.)?vk\.(?:com|ru)|vkvideo\.ru)/video(-?\d+)_(\d+)', re.IGNORECASE)
 STEAMDB_APP_RE = re.compile(r'https?://(?:www\.)?steamdb\.info/app/(\d+)', re.IGNORECASE)
 STEAMDB_RELEASE_WINDOW_DAYS = 90
