@@ -175,6 +175,12 @@
   }
 
   // === Render ===
+  var archiveIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"'
+                  + ' stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'
+                  + ' aria-hidden="true" focusable="false">'
+                  + '<rect x="3" y="3" width="18" height="4" rx="1"></rect>'
+                  + '<path d="M5 7v14h14V7M10 11h4"></path></svg>';
+
   function render() {
     renderTable();
     renderPagination();
@@ -214,11 +220,13 @@
       var titleCell = '<a href="' + esc(item.Link) + '" target="_blank" rel="noopener">' + esc(item.Title) + '</a>';
       if (item.WaybackURL) {
         titleCell += ' <a class="archive-link" href="' + esc(item.WaybackURL)
-                  + '" target="_blank" rel="noopener" title="View archived snapshot">\uD83D\uDDC4</a>';
+                  + '" target="_blank" rel="noopener" title="View archived snapshot"'
+                  + ' aria-label="View archived snapshot">' + archiveIcon + '</a>';
       } else if (item.Link) {
         titleCell += ' <a class="archive-link archive-link-muted" href="https://web.archive.org/web/*/'
                   + encodeURI(item.Link)
-                  + '" target="_blank" rel="noopener" title="Search Wayback Machine for snapshots">\uD83D\uDDC4</a>';
+                  + '" target="_blank" rel="noopener" title="Search Wayback Machine for snapshots"'
+                  + ' aria-label="Search Wayback Machine for snapshots">' + archiveIcon + '</a>';
       }
       html += "<td>" + titleCell + "</td>";
       var domain = extractDomain(item.Link);

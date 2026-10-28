@@ -610,10 +610,13 @@ td select {
 a.archive-link {
   display: inline-block;
   margin-left: 0.3rem;
-  font-size: 0.85em;
   text-decoration: none;
   opacity: 0.55;
   vertical-align: middle;
+}
+
+a.archive-link svg {
+  display: block;
 }
 
 a.archive-link:hover {
