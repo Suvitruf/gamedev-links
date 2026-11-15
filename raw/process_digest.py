@@ -232,7 +232,7 @@ def extract_resources_from_digest(html):
         if not link:
             block_links = re.findall(r'<a\s+href="([^"]+)"', block_html)
             for candidate in block_links:
-                if 'wp-content/uploads' in candidate:
+                if 'wp-content/uploads' in candidate or 'cdn.suvitruf.ru' in candidate:
                     continue
                 if candidate.startswith('#'):
                     continue
@@ -289,7 +289,7 @@ def extract_image_map(html):
         return {}
 
     img_pattern = re.compile(
-        r'<img[^>]+src=["\']([^"\']*wp-content/uploads[^"\']*)["\']',
+        r'<img[^>]+src=["\']([^"\']*(?:wp-content/uploads|cdn\.suvitruf\.ru/)[^"\']*)["\']',
         re.IGNORECASE
     )
 
@@ -314,7 +314,7 @@ def extract_image_map(html):
             block_links = re.findall(r'<a\s+href="([^"]+)"', block_html)
             resource_link = None
             for candidate in block_links:
-                if 'wp-content/uploads' in candidate:
+                if 'wp-content/uploads' in candidate or 'cdn.suvitruf.ru' in candidate:
                     continue
                 if candidate.startswith('#'):
                     continue
